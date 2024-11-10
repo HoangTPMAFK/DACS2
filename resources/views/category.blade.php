@@ -943,7 +943,7 @@
                     </div>
                 </div>
                 <div class="xl:w-9/12 flex-grow-0 flex-shrink-0 basis-auto">
-                    <div class="flex-between gap-16 flex-wrap mb-40"><span class="text-gray-900">Showing 1-20 of 85
+                    <div class="flex-between gap-16 flex-wrap mb-40"><span class="text-gray-900">Trang 
                             result</span>
                         <div class="relative flex items-center gap-16 flex-wrap">
                             <div class="list-grid-btns flex items-center gap-16"><button type="button"
