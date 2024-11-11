@@ -7,13 +7,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Http\Services\User\UserService;
+use App\Http\Services\Category\CategoryService;
 
 class LoginController extends Controller
 {
     protected $userService;
-    public function __construct(UserService $userService)
+    protected $categoryService;
+    public function __construct(UserService $userService, CategoryService $categoryService)
     {
         $this->userService = $userService;
+        $this->categoryService = $categoryService;
     }
     /**
      * Display a listing of the resource.
@@ -43,7 +46,10 @@ class LoginController extends Controller
         return view('admin/login');
     }
     public function login() {
-        return view('login');
+        return view('login', [
+            'title' => 'Đăng nhâp',
+            'vendors' => $this->categoryService->getVendors(),
+        ]);
     }
 
     public function postLogin(Request $request) {
@@ -62,7 +68,10 @@ class LoginController extends Controller
         return redirect()->back();
     }
     public function signup() {
-        return view('signup');
+        return view('signup', [
+            'title' => 'Đăng ký tài khoản',
+            'vendors' => $this->categoryService->getVendors(),
+        ]);
     }
     public function postSignup(Request $request) {
         $this->validate($request, [

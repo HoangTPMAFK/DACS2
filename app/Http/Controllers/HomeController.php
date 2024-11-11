@@ -68,4 +68,10 @@ class HomeController extends Controller
             'vendors' => $this->categoryService->getVendors(),
         ]);
     }
+    public function myaccount() {
+        return view('my_account', [
+            'title' => 'Tài khoản của tôi',
+            'vendors' => $this->categoryService->getVendors(),
+        ]);
+    }
 }

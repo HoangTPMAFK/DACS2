@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Http\Services\Order\ItemInOrderService;
 use App\Http\Services\Order\OrderService;
 use App\Http\Services\Cart\CartService;
+use App\Http\Services\Category\CategoryService;
 use App\Models\ItemInOrder;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
@@ -17,11 +18,13 @@ class OrderController extends Controller
     protected $itemInOrderService;
     protected $orderService;
     protected $cartService;
-    public function __construct(ItemInOrderService $itemInOrderService, OrderService $orderService, CartService $cartService)
+    protected $categoryService;
+    public function __construct(ItemInOrderService $itemInOrderService, OrderService $orderService, CartService $cartService, CategoryService $categoryService)
     {
         $this->itemInOrderService = $itemInOrderService;
         $this->orderService = $orderService;
         $this->cartService = $cartService;
+        $this->categoryService = $categoryService;
     }
     /**
      * Display a listing of the resource.
@@ -45,6 +48,7 @@ class OrderController extends Controller
             'title' => 'Thanh toán đơn hàng',
             'products' => $this->cartService->get(),
             'totalPrice' => $totalPrice,
+            'vendors' => $this->categoryService->getVendors(),
         ]);
     }
 

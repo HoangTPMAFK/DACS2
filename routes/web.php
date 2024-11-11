@@ -121,9 +121,7 @@ Route::post('/xem-chi-nhanh', [AgencyController::class, 'show']);
 Route::get('/xem-so-luong', [InventoryController::class, 'show']);
 Route::post('/them-vao-gio', [CartController::class, 'store']);
 Route::get('/cap-nhat-gio-hang/{customer_id}', [CartController::class, 'update']);
-Route::get('/tai-khoan-cua-toi', function () {
-    return view('my_account');
-});
+Route::get('/tai-khoan-cua-toi', [HomeController::class, 'myaccount']);
 Route::get('/thanh-toan', [OrderController::class, 'create']);
 Route::post('/thanh-toan/{paymentType}', [OrderController::class, 'store']);
 Route::get('/thanh-toan/vnpay/return', [OrderController::class, 'vnpay_return']);
