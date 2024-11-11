@@ -1,15 +1,7 @@
 <!doctype html>
 <html lang="en" class="color-two font-exo">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>MarketPro - E-commerce HTML5 Tailwind CSS Template</title>
-    <link rel="shortcut icon" href="images/favicon.png">
-    <script defer="defer" src="js/app.bundle.js"></script>
-    <link href="css/app.min.css" rel="stylesheet">
-</head>
+@include('head')
 
 <body>
     <div class="preloader fixed inset-0 z-[9999] flex justify-center items-center bg-white"><img

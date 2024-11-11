@@ -24,6 +24,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');

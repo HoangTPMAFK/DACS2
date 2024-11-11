@@ -1710,15 +1710,19 @@
               var t = e(this).siblings(".quantity__input"),
                 i = t.val();
               i++, t.val(i);
-              var c = t.parent().parent().prev().find(">:first-child").text().replace(",", "").replace(",", "").replace(' đ', '');
-              t.parent().parent().next().find(">:first-child").text((i*c).toLocaleString() + "đ");
+              if (document.querySelector('#cart') != null) {
+                var c = t.parent().parent().prev().find(">:first-child").text().replace(",", "").replace(",", "").replace(' đ', '');
+                t.parent().parent().next().find(">:first-child").text((i*c).toLocaleString() + "đ");
+              }
             }),
               e(c).on("click", function () {
                 var t = e(this).siblings(".quantity__input"),
                   i = t.val();
                 i > 1 && i--, t.val(i);
-                var c = t.parent().parent().prev().find(">:first-child").text().replace(",", "").replace(",", "").replace(' đ', '');
-                t.parent().parent().next().find(">:first-child").text((i*c).toLocaleString() + "đ");
+                if (document.querySelector('#cart') != null) {
+                  var c = t.parent().parent().prev().find(">:first-child").text().replace(",", "").replace(",", "").replace(' đ', '');
+                  t.parent().parent().next().find(">:first-child").text((i*c).toLocaleString() + "đ");
+                }
               }),
               e(".color-list__button").on("click", function () {
                 e(".color-list__button").removeClass("border-gray-900"),

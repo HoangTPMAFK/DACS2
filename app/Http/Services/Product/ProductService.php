@@ -57,18 +57,92 @@ class ProductService {
     }
     public function getCustomerProducts($column = NULL, $value = NULL, array $array = NULL) {
         $result = NULL;
+        $productsPerPage = 5;
+    
         if (!is_array($array)) {
-            if ($column == "slug_vi" || $column == "id") {
-                return Product::where($column, $value)->first();
-            } else
-                return Product::where($column, $value)->paginate(5);
+            if (!isset($_GET['sort'])) {
+                if ($column == "slug_vi" || $column == "id") {
+                    return Product::where($column, $value)->first();
+                } else {
+                    $result = Product::where($column, $value);
+                }
+            } else {
+                switch ($_GET['sort']) {
+                    case 1:
+                        $result = Product::where($column, $value)->orderBy('created_at', 'DESC');
+                        break;
+                    case 2:
+                        $result = Product::where($column, $value)->orderBy('product_name');
+                        break;
+                    case 3:
+                        $result = Product::where($column, $value)->orderBy('product_name', 'DESC');
+                        break;
+                    case 4:
+                        $result = Product::where($column, $value)->orderBy('price');
+                        break;
+                    case 5:
+                        $result = Product::where($column, $value)->orderBy('price', 'DESC');
+                        break;
+                }
+            }
+    
+            // Apply additional filters based on query parameters
+            if (isset($_GET['color'])) {
+                $result = $result->where('color', $_GET['color']);
+            }
+            if (isset($_GET['ram'])) {
+                $result = $result->whereLike('edition', $_GET['ram'].'%');
+            }
+            if (isset($_GET['capacity'])) {
+                $result = $result->whereLike('edition', '%'.$_GET['capacity'].'%');
+            }
+            if (isset($_GET['price_level'])) {
+                // Apply price filter based on `price_level`
+                switch ($_GET['price_level']) {
+                    case '0-3000000':
+                        $result = $result->whereBetween('price', [0, 3000000]);
+                        break;
+                    case '3000000-5000000':
+                        $result = $result->whereBetween('price', [3000000, 5000000]);
+                        break;
+                    case '5000000-10000000':
+                        $result = $result->whereBetween('price', [5000000, 10000000]);
+                        break;
+                    case '10000000-15000000':
+                        $result = $result->whereBetween('price', [10000000, 15000000]);
+                        break;
+                    case '15000000-20000000':
+                        $result = $result->whereBetween('price', [15000000, 20000000]);
+                        break;
+                    case '20000000-30000000':
+                        $result = $result->whereBetween('price', [20000000, 30000000]);
+                        break;
+                    case '30000000+':
+                        $result = $result->where('price', '>', 30000000);
+                        break;
+                }
+            }
+    
+            return $result->paginate($productsPerPage);
         } else {
-            $result = Product::class;
+            // Handle filtering using an array of conditions
             return Product::where($array)->paginate(18);
         }
     }
+    
     public function getProductListById(array $array) {
         return Product::whereIn('id', $array)->get();
+    }
+    public function sortProducts($option) {
+        switch ($option) {
+            case 1:
+                // return Product
+                break;
+            
+            default:
+                # code...
+                break;
+        }
     }
     public function update($request, $product) {
         try {

@@ -957,7 +957,7 @@
                     <form action="/them-vao-gio" method="post" class="product-details__sidebar py-40 px-32 border border-gray-100 rounded-16">
                         <input type="hidden" name="product_id" id="product_id" value="{{ $product['id'] }}">
                         <div class="mb-32"><label for="delivery"
-                                class="h6 activePage mb-8 text-heading font-[600] block">Delivery</label>
+                                class="h6 activePage mb-8 text-heading font-[600] block">Giao hàng</label>
                             <div class="flex items-center border border-gray-100 rounded-4 px-16 my-16">
                                 <span
                                     class="text-xl flex text-main-600"><i class="ph ph-map-pin"></i> </span>
@@ -993,18 +993,18 @@
                         </div>
                         <div class="mb-32">
                             <div class="flex-between flex-wrap gap-8 border-b border-gray-100 pb-16 mb-16"><span
-                                    class="text-gray-500">Price</span>
-                                <h6 class="text-lg mb-0">$150.00</h6>
+                                    class="text-gray-500">Giá</span>
+                                <h6 class="text-lg mb-0">{{ number_format($product['price']).' đ' }}</h6>
                             </div>
-                            <div class="flex-between flex-wrap gap-8"><span class="text-gray-500">Shipping</span>
-                                <h6 class="text-lg mb-0">From $10.00</h6>
+                            <div class="flex-between flex-wrap gap-8"><span class="text-gray-500">Vận chuyển</span>
+                                <h6 class="text-lg mb-0">Miễn phí</h6>
                             </div>
                         </div>
                         <a href="javascript:addToCart({{ $product['id'] }})"
                             class="btn btn-main flex items-center justify-center gap-8 rounded-8 py-16 font-normal mt-48"><i
                                 class="ph ph-shopping-cart-simple text-lg"></i> Thêm vào giỏ hàng </a>
                                 <a href="javascript:addToCart({{ $product['id'] }})"
-                            class="btn btn-outline-main ritu rounded-8 py-16 font-normal mt-16 w-full">Buy Now</a>
+                            class="btn btn-outline-main ritu rounded-8 py-16 font-normal mt-16 w-full">Mua ngay</a>
                         <div class="mt-32">
                             <div class="px-16 py-8 bg-main-50 rounded-8 flex-between gap-24 mb-14"><span
                                     class="w-32 h-32 bg-white text-main-600 rounded-[50%] flex items-center justify-center text-xl flex-shrink-0"><i

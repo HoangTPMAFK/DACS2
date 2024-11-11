@@ -44,6 +44,7 @@ class HomeController extends Controller
             return view('category', [
                 'title' => $category['category_name'],
                 'products' => $this->productService->getCustomerProducts('category', $category['slug_vi']),
+                'vendors' => $this->categoryService->getVendors(),
             ]);
         } else {
             $category = $this->categoryService->get('slug_vi', $category_slug)->attributesToArray();
@@ -53,6 +54,7 @@ class HomeController extends Controller
                     'category' => $category['slug_vi'],
                     'vendor' => $vendor
                 ]),
+                'vendors' => $this->categoryService->getVendors(),
             ]);
         }
     }
@@ -63,6 +65,7 @@ class HomeController extends Controller
             'title' => $product['product_name'],
             'product' => $product,
             'comments' => $comments,
+            'vendors' => $this->categoryService->getVendors(),
         ]);
     }
 }

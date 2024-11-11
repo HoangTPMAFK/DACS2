@@ -968,6 +968,7 @@
             </div>
         </div>
     </section>
+    <section class="hidden" id="cart"></section>
     <section class="shipping mb-24" id="shipping">
         <div class="container container-lg">
             <div class="row g-4">

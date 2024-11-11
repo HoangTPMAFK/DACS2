@@ -1,18 +1,7 @@
 <!doctype html>
 <html lang="en" class="color-two font-exo">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>{{ $title }}</title>
-    <link rel="shortcut icon" href="images/favicon.png">
-    <script defer="defer" src="js/app.bundle.js"></script>
-    @vite('resources/css/app.css')
-    <link href="css/app.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-</head>
+@include('head')
 
 <body>
     <div class="preloader fixed inset-0 z-[9999] flex justify-center items-center bg-white"><img
@@ -35,207 +24,80 @@
                         class="ph ph-magnifying-glass"></i></button></div>
         </div>
     </form>
-    <div class="mobile-menu scroll-sm xl:hidden block"><button type="button" class="close-button"><i
-                class="ph ph-x"></i></button>
-        <div class="mobile-menu__inner"><a href="index.html" class="mobile-menu__logo"><img src="images/logo.png"
-                    alt="Logo"></a>
-            <div class="mobile-menu__menu">
-                <ul class="nav-menu flex items-center nav-menu--mobile">
-                    <li class="on-hover-item nav-menu__item has-submenu activePage"><a href="javascript:void(0)"
-                            class="nav-menu__link">Home</a>
-                        <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-                            <li class="common-dropdown__item nav-submenu__item activePage"><a href="index.html"
-                                    class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Home
-                                    Grocery</a></li>
-                            <li class="common-dropdown__item nav-submenu__item"><a href="index-two.html"
-                                    class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Home
-                                    Electronics</a></li>
-                            <li class="common-dropdown__item nav-submenu__item"><a href="index-three.html"
-                                    class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Home
-                                    Fashion</a></li>
-                        </ul>
-                    </li>
-                    <li class="on-hover-item nav-menu__item has-submenu"><a href="javascript:void(0)"
-                            class="nav-menu__link">Shop</a>
-                        <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-                            <li class="common-dropdown__item nav-submenu__item"><a href="shop.html"
-                                    class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Shop</a></li>
-                            <li class="common-dropdown__item nav-submenu__item"><a href="product-details.html"
-                                    class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Shop
-                                    Details</a></li>
-                            <li class="common-dropdown__item nav-submenu__item"><a href="product-details-two.html"
-                                    class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Shop Details
-                                    Two</a></li>
-                        </ul>
-                    </li>
-                    <li class="on-hover-item nav-menu__item has-submenu"><span
-                            class="badge-notification bg-warning-600 text-white text-sm py-2 px-8 rounded-4">New</span>
-                        <a href="javascript:void(0)" class="nav-menu__link">Pages</a>
-                        <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-                            <li class="common-dropdown__item nav-submenu__item"><a href="cart.html"
-                                    class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Cart</a></li>
-                            <li class="common-dropdown__item nav-submenu__item"><a href="wishlist.html"
-                                    class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Wishlist</a>
-                            </li>
-                            <li class="common-dropdown__item nav-submenu__item"><a href="checkout.html"
-                                    class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Checkout</a>
-                            </li>
-                            <li class="common-dropdown__item nav-submenu__item"><a href="become-seller.html"
-                                    class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Become
-                                    Seller</a></li>
-                            <li class="common-dropdown__item nav-submenu__item"><a href="account.html"
-                                    class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Account</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="on-hover-item nav-menu__item has-submenu"><span
-                            class="badge-notification bg-tertiary-600 text-white text-sm py-2 px-8 rounded-4">New</span>
-                        <a href="javascript:void(0)" class="nav-menu__link">Vendors</a>
-                        <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-                            <li class="common-dropdown__item nav-submenu__item"><a href="vendor.html"
-                                    class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Vendors</a>
-                            </li>
-                            <li class="common-dropdown__item nav-submenu__item"><a href="vendor-details.html"
-                                    class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Vendor
-                                    Details</a></li>
-                            <li class="common-dropdown__item nav-submenu__item"><a href="vendor-two.html"
-                                    class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Vendors Two</a>
-                            </li>
-                            <li class="common-dropdown__item nav-submenu__item"><a href="vendor-two-details.html"
-                                    class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Vendors Two
-                                    Details</a></li>
-                        </ul>
-                    </li>
-                    <li class="on-hover-item nav-menu__item has-submenu"><a href="javascript:void(0)"
-                            class="nav-menu__link">Blog</a>
-                        <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-                            <li class="common-dropdown__item nav-submenu__item"><a href="blog.html"
-                                    class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Blog</a></li>
-                            <li class="common-dropdown__item nav-submenu__item"><a href="blog-details.html"
-                                    class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Blog
-                                    Details</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-menu__item"><a href="contact.html" class="nav-menu__link">Contact Us</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
     <header class="header-middle style-two bg-color-neutral">
         <div class="container container-lg">
             <nav class="header-inner flex-between">
-                <div class="logo"><a href="index.html" class="link"><img src="images/logo-two.png" alt="Logo"></a></div>
+                <div class="logo">
+                    <a href="index.html" class="link"><img src="images/logo-two.png" alt="Logo"></a>
+                </div>
                 <div class="flex items-center md:gap-[16px] max-sm:gap-0">
-                    <div class="select-dropdown-for-home-two xl:hidden block">
-                        <ul class="header-top__right style-two flex items-center flex-wrap">
-                            <li
-                                class="on-hover-item border-right-item border-right-item-sm-space has-submenu arrow-white">
-                                <a href="javascript:void(0)" class="selected-text text-heading text-sm py-8">Eng</a>
-                                <ul
-                                    class="selectable-text-list on-hover-dropdown common-dropdown common-dropdown--sm max-h-200 scroll-sm !px-0 py-8">
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag1.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> English</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag2.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> Japan</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag3.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> French</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag4.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> Germany</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag6.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> Bangladesh</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag5.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> South Korea</a></li>
-                                </ul>
-                            </li>
-                            <li
-                                class="on-hover-item border-right-item border-right-item-sm-space has-submenu arrow-white">
-                                <a href="javascript:void(0)" class="selected-text text-heading text-sm py-8">USD</a>
-                                <ul
-                                    class="selectable-text-list on-hover-dropdown common-dropdown common-dropdown--sm max-h-200 scroll-sm px-0 py-8">
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag1.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> USD</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag2.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> Yen</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag3.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> Franc</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag4.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> EURO</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag6.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> BDT</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag5.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> WON</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <form action="index-two.html#" class="flex items-center flex-wrap form-location-wrapper">
+                    <form action="index-two.html#" class="flex items-center flex-wrap form-location-wrapper relative">
                         <div class="search-category style-two h-48 search-form md:flex hidden">
                             <div class="search-form__wrapper relative">
                                 <input
                                     class="search-form__input common-input py-13 ps-16 pe-18 rounded-none border-0"
-                                    placeholder="Tìm kiếm sản phẩm">
+                                    placeholder="Tìm kiếm sản phẩm" oninput="searchProduct(this)">
                             </div>
                             <button type="submit"
-                                class="bg-main-two-600 items-center justify-center text-xl text-white flex-shrink-0 w-48 hover-bg-main-two-700 xl:flex hidden"><i
-                                    class="ph ph-magnifying-glass"></i></button>
+                                class="bg-main-two-600 items-center justify-center text-xl text-white flex-shrink-0 w-48 hover-bg-main-two-700 xl:flex hidden">
+                                <i class="ph ph-magnifying-glass"></i>
+                            </button>
                         </div>
                     </form>
                 </div>
                 <div class="header-right items-center xl:block hidden">
-                    <div class="header-two-activities flex items-center flex-wrap gap-32"><button type="button"
-                            class="items-center search-icon xl:hidden flex gap-4 item-hover-two"><span
-                                class="text-2xl text-white flex relative item-hover__text"><i
-                                    class="ph ph-magnifying-glass"></i></span></button> <a href="account.html"
-                            class="flex items-center flex-col gap-8 item-hover-two"><span
-                                class="text-2xl text-white flex relative item-hover__text"><i class="ph ph-user"></i>
-                            </span><span class="text-md text-white item-hover__text hidden xl:flex">Tài khoản</span>
-                        </a><a href="wishlist.html" class="flex items-center flex-col gap-8 item-hover-two"><span
-                                class="text-2xl text-white flex relative me-6 mt-6 item-hover__text"><i
-                                    class="ph ph-mailbox"></i> <span
-                                    class="w-16 h-16 flex items-center justify-center rounded-[50%] bg-main-two-600 text-white text-xs absolute top-n6 end-n4">2</span>
-                            </span><span class="text-md text-white item-hover__text hidden xl:flex">Đơn hàng</span>
-                        </a><a href="cart.html" class="flex items-center flex-col gap-8 item-hover-two"><span
-                                class="text-2xl text-white flex relative me-6 mt-6 item-hover__text"><i
-                                    class="ph ph-shopping-cart-simple"></i> <span
-                                    class="w-16 h-16 flex items-center justify-center rounded-[50%] bg-main-two-600 text-white text-xs absolute top-n6 end-n4">2</span>
-                            </span><span class="text-md text-white item-hover__text hidden xl:flex">Giỏ hàng</span></a>
+                    <div class="header-two-activities flex items-center flex-wrap gap-32">
+                        <button type="button" class="items-center search-icon xl:hidden flex gap-4 item-hover-two">
+                            <span class="text-2xl text-white flex relative item-hover__text"><i class="ph ph-magnifying-glass"></i></span>
+                        </button>
+                        <a href="/tai-khoan-cua-toi" class="flex items-center flex-col gap-8 item-hover-two">
+                            <span class="text-2xl text-white flex relative item-hover__text"><i class="ph ph-user"></i></span>
+                            <span class="text-md text-white item-hover__text hidden xl:flex">Tài khoản</span>
+                        </a>
+                        <a href="/quan-ly-don-hang" class="flex items-center flex-col gap-8 item-hover-two">
+                            <span class="text-2xl text-white flex relative me-6 mt-6 item-hover__text"><i class="ph ph-mailbox"></i></span>
+                            <span class="text-md text-white item-hover__text hidden xl:flex">Đơn hàng</span>
+                        </a>
+                        <a href="/gio-hang" class="flex items-center flex-col gap-8 item-hover-two">
+                            <span class="text-2xl text-white flex relative me-6 mt-6 item-hover__text"><i class="ph ph-shopping-cart-simple"></i></span>
+                            <span class="text-md text-white item-hover__text hidden xl:flex">Giỏ hàng</span>
+                        </a>
                     </div>
                 </div>
             </nav>
+            <div id="dropdown" class="absolute z-10 w-full md:w-[500px] mt-2 bg-white border border-gray-300 rounded-md shadow-lg hidden" style=" max-width: 100%; position: absolute;">
+                <ul class="max-h-48 overflow-y-auto" style="list-style-type: none; padding: 0; margin: 0; z-index: 50; max-height: 200px; overflow-y: auto;">
+                    <!-- Dynamic search results will appear here -->
+                </ul>
+                <style>
+                    /* Webkit-based browsers (Chrome, Safari) */
+                    #dropdown ul::-webkit-scrollbar {
+                        width: 8px;
+                    }
+                    #dropdown ul::-webkit-scrollbar-track {
+                        background: #f0f0f0;
+                        border-radius: 10px;
+                    }
+                    #dropdown ul::-webkit-scrollbar-thumb {
+                        background-color: #c0c0c0;
+                        border-radius: 10px;
+                        border: 2px solid #f0f0f0;
+                    }
+                    #dropdown ul::-webkit-scrollbar-thumb:hover {
+                        background-color: #a0a0a0;
+                    }
+                </style>
+            </div>
         </div>
     </header>
-    <header class="header bg-white border-b border-gray-100">
-        <div class="container container-lg">
+    <header class="header bg-white border-b border-gray-100" >
+        <div class="container container-lg" style="z-index:10">
             <nav class="header-inner flex justify-between gap-8">
                 <div class="flex items-center menu-category-wrapper">
                     <div class="category-two block"><button type="button"
                             class="category__button flex items-center gap-8 font-[500] bg-main-two-600 p-16 text-white"><span
                                 class="icon text-2xl sm:flex hidden"><i class="ph ph-dots-nine"></i></span> <span
-                                class="md:flex hidden">All</span> Categories <span class="arrow-icon text-xl flex"><i
+                                class="md:flex hidden"></span> Danh mục <span class="arrow-icon text-xl flex"><i
                                     class="ph ph-caret-down"></i></span></button>
                         <div
                             class="responsive-dropdown common-dropdown xl:hidden block nav-submenu p-0 submenus-submenu-wrapper shadow-none border border-gray-100">
@@ -265,13 +127,35 @@
                         </div>
                     </div>
                 </div>
+                <div class="me-8 xl:hidden block">
+
+                    <div class="header-two-activities flex items-center flex-wrap gap-32 pt-16"><button type="button"
+                            class="items-center search-icon xl:hidden flex gap-4 item-hover-two"><span
+                                class="text-2xl text-white flex relative item-hover__text"><i
+                                    class="ph ph-magnifying-glass"></i></span></button> <a href="/tai-khoan-cua-toi"
+                            class="flex items-center flex-col gap-8 item-hover-two"><span
+                                class="text-2xl text-white flex relative item-hover__text"><i
+                                    class="ph ph-user"></i> </span><span
+                                class="text-md text-white item-hover__text hidden xl:flex">Tài khoản của tôi</span> </a><a
+                            href="/quan-ly-don-hang" class="flex items-center flex-col gap-8 item-hover-two"><span
+                                class="text-2xl text-white flex relative me-6 mt-6 item-hover__text"><i
+                                    class="ph ph-mailbox"></i> <span
+                                    class="w-16 h-16 flex items-center justify-center rounded-[50%] bg-main-two-600 text-white text-xs absolute top-n6 end-n4">2</span>
+                            </span><span class="text-md text-white item-hover__text hidden xl:flex">Đơn hàng</span>
+                        </a><a href="/gio-hang" class="flex items-center flex-col gap-8 item-hover-two"><span
+                                class="text-2xl text-white flex relative me-6 mt-6 item-hover__text"><i
+                                    class="ph ph-shopping-cart-simple"></i> <span
+                                    class="w-16 h-16 flex items-center justify-center rounded-[50%] bg-main-two-600 text-white text-xs absolute top-n6 end-n4">2</span>
+                            </span><span class="text-md text-white item-hover__text hidden xl:flex">Giỏ hàng</span></a>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
     <div class="banner-two">
         <div class="container container-lg">
-            <div class="banner-two-wrapper flex items-start">
-                <div class="w-265 xl:block hidden flex-shrink-0">
+            <div class="banner-two-wrapper flex items-end">
+                {{-- <div class="w-265 xl:block hidden flex-shrink-0" style="z-index: 40;">
                     <div
                         class="responsive-dropdown style-two common-dropdown nav-submenu p-0 submenus-submenu-wrapper shadow-none border border-gray-100 !relative border-t-0">
                         <button type="button"
@@ -296,7 +180,7 @@
                             @endforeach
                         </ul>
                     </div>
-                </div>
+                </div> --}}
                 <div class="banner-item-two-wrapper rounded-24 overflow-hidden relative arrow-center flex-grow mb-0">
                     <img src="images/banner-two-bg.png" alt="Image"
                         class="banner-img absolute inset-block-start-0 inset-inline-start-0 w-full h-full z-[-1] object-fit-cover rounded-24">

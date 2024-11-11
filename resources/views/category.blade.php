@@ -1,17 +1,7 @@
 <!doctype html>
 <html lang="en" class="color-two font-exo">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>MarketPro - E-commerce HTML5 Tailwind CSS Template</title>
-    <link rel="shortcut icon" href="images/favicon.png">
-    <script defer="defer" src="/js/app.bundle.js"></script>
-    @vite('resources/css/app.css')
-    <link href="/css/app.min.css" rel="stylesheet">
-    
-</head>
+@include('head')
 
 <body>
     <div class="preloader fixed inset-0 z-[9999] flex justify-center items-center bg-white"><img
@@ -487,292 +477,45 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="category block on-hover-item bg-main-600 text-white"><button type="button"
-                            class="category__button flex items-center gap-8 font-[500] p-16 border-r border-l border-gray-100 text-white"><span
-                                class="icon text-2xl sm:flex hidden"><i class="ph ph-dots-nine"></i></span> <span
-                                class="md:flex hidden">All</span> Categories <span class="arrow-icon text-xl flex"><i
-                                    class="ph ph-caret-down"></i></span></button>
-                        <div
-                            class="responsive-dropdown on-hover-dropdown common-dropdown nav-submenu p-0 submenus-submenu-wrapper">
-                            <button type="button"
-                                class="close-responsive-dropdown rounded-[50%] text-xl absolute right-0 inset-block-start-0 mt-4 me-8 xl:hidden flex"><i
-                                    class="ph ph-x"></i></button>
-                            <div class="logo px-16 xl:hidden block"><a href="index.html" class="link"><img
-                                        src="images/logo.png" alt="Logo"></a></div>
+                    <div class="category block on-hover-item bg-main-600 text-white">
+                        <button type="button" class="category__button flex items-center gap-8 font-[500] p-16 border-r border-l border-gray-100 text-white">
+                            <span class="icon text-2xl sm:flex hidden"><i class="ph ph-dots-nine"></i></span>
+                            <span class="md:flex hidden">Danh mục</span>
+                            <span class="arrow-icon text-xl flex"><i class="ph ph-caret-down"></i></span>
+                        </button>
+                        <div class="responsive-dropdown on-hover-dropdown common-dropdown nav-submenu p-0 submenus-submenu-wrapper">
+                            <button type="button" class="close-responsive-dropdown rounded-[50%] text-xl absolute right-0 inset-block-start-0 mt-4 me-8 xl:hidden flex">
+                                <i class="ph ph-x"></i>
+                            </button>
+                            <div class="logo px-16 xl:hidden block">
+                                <a href="index.html" class="link">
+                                    <img src="images/logo.png" alt="Logo">
+                                </a>
+                            </div>
                             <ul class="scroll-sm p-0 py-8 w-300 max-h-400 overflow-y-auto">
-                                <li class="has-submenus-submenu"><a href="javascript:void(0)"
-                                        class="text-gray-500 text-15 py-12 px-16 flex items-center gap-8 rounded-none"><span
-                                            class="text-xl flex"><i class="ph ph-carrot"></i></span> <span>Vegetables
-                                            &amp; Fruit</span> <span class="icon text-md flex ms-auto"><i
-                                                class="ph ph-caret-right"></i></span></a>
-                                    <div class="submenus-submenu py-16">
-                                        <h6 class="text-lg px-16 submenus-submenu__title">Vegetables &amp; Fruit</h6>
-                                        <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
-                                            <li><a href="shop.html">Potato &amp; Tomato</a></li>
-                                            <li><a href="shop.html">Cucumber &amp; Capsicum</a></li>
-                                            <li><a href="shop.html">Leafy Vegetables</a></li>
-                                            <li><a href="shop.html">Root Vegetables</a></li>
-                                            <li><a href="shop.html">Beans &amp; Okra</a></li>
-                                            <li><a href="shop.html">Cabbage &amp; Cauliflower</a></li>
-                                            <li><a href="shop.html">Gourd &amp; Drumstick</a></li>
-                                            <li><a href="shop.html">Specialty</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="has-submenus-submenu"><a href="javascript:void(0)"
-                                        class="text-gray-500 text-15 py-12 px-16 flex items-center gap-8 rounded-none"><span
-                                            class="text-xl flex"><i class="ph ph-brandy"></i></span>
-                                        <span>Beverages</span> <span class="icon text-md flex ms-auto"><i
-                                                class="ph ph-caret-right"></i></span></a>
-                                    <div class="submenus-submenu py-16">
-                                        <h6 class="text-lg px-16 submenus-submenu__title">Beverages</h6>
-                                        <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
-                                            <li><a href="shop.html">Soda &amp; Cocktail Mix</a></li>
-                                            <li><a href="shop.html">Sports &amp; Energy Drinks</a></li>
-                                            <li><a href="shop.html">Non Alcoholic Drinks</a></li>
-                                            <li><a href="shop.html">Packaged Water</a></li>
-                                            <li><a href="shop.html">Spring Water</a></li>
-                                            <li><a href="shop.html">Flavoured Water</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="has-submenus-submenu"><a href="javascript:void(0)"
-                                        class="text-gray-500 text-15 py-12 px-16 flex items-center gap-8 rounded-none"><span
-                                            class="text-xl flex"><i class="ph ph-brandy"></i></span> <span>Meats &amp;
-                                            Seafood</span> <span class="icon text-md flex ms-auto"><i
-                                                class="ph ph-caret-right"></i></span></a>
-                                    <div class="submenus-submenu py-16">
-                                        <h6 class="text-lg px-16 submenus-submenu__title">Meats &amp; Seafood</h6>
-                                        <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
-                                            <li><a href="shop.html">Fresh Meat</a></li>
-                                            <li><a href="shop.html">Frozen Meat</a></li>
-                                            <li><a href="shop.html">Marinated Meat</a></li>
-                                            <li><a href="shop.html">Fresh &amp; Frozen Meat</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="has-submenus-submenu"><a href="javascript:void(0)"
-                                        class="text-gray-500 text-15 py-12 px-16 flex items-center gap-8 rounded-none"><span
-                                            class="text-xl flex"><i class="ph ph-brandy"></i></span> <span>Breakfast
-                                            &amp; Dairy</span> <span class="icon text-md flex ms-auto"><i
-                                                class="ph ph-caret-right"></i></span></a>
-                                    <div class="submenus-submenu py-16">
-                                        <h6 class="text-lg px-16 submenus-submenu__title">Breakfast &amp; Dairy</h6>
-                                        <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
-                                            <li><a href="shop.html">Oats &amp; Porridge</a></li>
-                                            <li><a href="shop.html">Kids Cereal</a></li>
-                                            <li><a href="shop.html">Muesli</a></li>
-                                            <li><a href="shop.html">Flakes</a></li>
-                                            <li><a href="shop.html">Granola &amp; Cereal Bars</a></li>
-                                            <li><a href="shop.html">Instant Noodles</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="has-submenus-submenu"><a href="javascript:void(0)"
-                                        class="text-gray-500 text-15 py-12 px-16 flex items-center gap-8 rounded-none"><span
-                                            class="text-xl flex"><i class="ph ph-brandy"></i></span> <span>Frozen
-                                            Foods</span> <span class="icon text-md flex ms-auto"><i
-                                                class="ph ph-caret-right"></i></span></a>
-                                    <div class="submenus-submenu py-16">
-                                        <h6 class="text-lg px-16 submenus-submenu__title">Frozen Foods</h6>
-                                        <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
-                                            <li><a href="shop.html">Instant Noodles</a></li>
-                                            <li><a href="shop.html">Hakka Noodles</a></li>
-                                            <li><a href="shop.html">Cup Noodles</a></li>
-                                            <li><a href="shop.html">Vermicelli</a></li>
-                                            <li><a href="shop.html">Instant Pasta</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="has-submenus-submenu"><a href="javascript:void(0)"
-                                        class="text-gray-500 text-15 py-12 px-16 flex items-center gap-8 rounded-none"><span
-                                            class="text-xl flex"><i class="ph ph-brandy"></i></span> <span>Biscuits
-                                            &amp; Snacks</span> <span class="icon text-md flex ms-auto"><i
-                                                class="ph ph-caret-right"></i></span></a>
-                                    <div class="submenus-submenu py-16">
-                                        <h6 class="text-lg px-16 submenus-submenu__title">Biscuits &amp; Snacks</h6>
-                                        <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
-                                            <li><a href="shop.html">Salted Biscuits</a></li>
-                                            <li><a href="shop.html">Marie, Health, Digestive</a></li>
-                                            <li><a href="shop.html">Cream Biscuits &amp; Wafers</a></li>
-                                            <li><a href="shop.html">Glucose &amp; Milk biscuits</a></li>
-                                            <li><a href="shop.html">Cookies</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="has-submenus-submenu"><a href="javascript:void(0)"
-                                        class="text-gray-500 text-15 py-12 px-16 flex items-center gap-8 rounded-none"><span
-                                            class="text-xl flex"><i class="ph ph-brandy"></i></span> <span>Grocery &amp;
-                                            Staples</span> <span class="icon text-md flex ms-auto"><i
-                                                class="ph ph-caret-right"></i></span></a>
-                                    <div class="submenus-submenu py-16">
-                                        <h6 class="text-lg px-16 submenus-submenu__title">Grocery &amp; Staples</h6>
-                                        <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
-                                            <li><a href="shop.html">Lemon, Ginger &amp; Garlic</a></li>
-                                            <li><a href="shop.html">Indian &amp; Exotic Herbs</a></li>
-                                            <li><a href="shop.html">Orangic Vegetables</a></li>
-                                            <li><a href="shop.html">Orangic Fruits</a></li>
-                                            <li><a href="shop.html">Orangic Dry Fruits</a></li>
-                                            <li><a href="shop.html">Orangic Dals &amp; pulses</a></li>
-                                            <li><a href="shop.html">Orangic Millet &amp; Flours</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
+                                @foreach ($vendors as $category_slug => $vendorsList)
+                                    <li class="has-submenus-submenu">
+                                        <a href="javascript:void(0)" class="text-gray-500 text-15 py-12 px-16 flex items-center gap-8 rounded-none">
+                                            <span class="text-xl flex"></span> 
+                                            <span>{{ $vendorsList[1] }}</span>
+                                            <span class="icon text-md flex ms-auto"><i class="ph ph-caret-right"></i></span>
+                                        </a>
+                                        <div class="submenus-submenu py-16">
+                                            <h6 class="text-lg px-16 submenus-submenu__title">{{ $vendorsList[1] }}</h6>
+                                            <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
+                                                @foreach ($vendorsList[0] as $vendorItem)
+                                                    <li><a href="/danh-muc/{{ $category_slug }}/{{ $vendorItem['slug'] }}">{{ $vendorItem['vendor_name'] }}</a></li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
-                    </div>
-                    <div class="header-menu xl:block hidden">
-                        <ul class="nav-menu flex items-center">
-                            <li class="on-hover-item nav-menu__item has-submenu activePage"><a href="javascript:void(0)"
-                                    class="nav-menu__link">Home</a>
-                                <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-                                    <li class="common-dropdown__item nav-submenu__item activePage"><a href="index.html"
-                                            class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Home
-                                            Grocery</a></li>
-                                    <li class="common-dropdown__item nav-submenu__item"><a href="index-two.html"
-                                            class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Home
-                                            Electronics</a></li>
-                                    <li class="common-dropdown__item nav-submenu__item"><a href="index-three.html"
-                                            class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Home
-                                            Fashion</a></li>
-                                </ul>
-                            </li>
-                            <li class="on-hover-item nav-menu__item has-submenu"><a href="javascript:void(0)"
-                                    class="nav-menu__link">Shop</a>
-                                <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-                                    <li class="common-dropdown__item nav-submenu__item"><a href="shop.html"
-                                            class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Shop</a>
-                                    </li>
-                                    <li class="common-dropdown__item nav-submenu__item"><a href="product-details.html"
-                                            class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Shop
-                                            Details</a></li>
-                                    <li class="common-dropdown__item nav-submenu__item"><a
-                                            href="product-details-two.html"
-                                            class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Shop
-                                            Details Two</a></li>
-                                </ul>
-                            </li>
-                            <li class="on-hover-item nav-menu__item has-submenu"><span
-                                    class="badge-notification bg-warning-600 text-white text-sm py-2 px-8 rounded-4">New</span>
-                                <a href="javascript:void(0)" class="nav-menu__link">Pages</a>
-                                <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-                                    <li class="common-dropdown__item nav-submenu__item"><a href="cart.html"
-                                            class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Cart</a>
-                                    </li>
-                                    <li class="common-dropdown__item nav-submenu__item"><a href="wishlist.html"
-                                            class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Wishlist</a>
-                                    </li>
-                                    <li class="common-dropdown__item nav-submenu__item"><a href="checkout.html"
-                                            class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Checkout</a>
-                                    </li>
-                                    <li class="common-dropdown__item nav-submenu__item"><a href="become-seller.html"
-                                            class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Become
-                                            Seller</a></li>
-                                    <li class="common-dropdown__item nav-submenu__item"><a href="account.html"
-                                            class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Account</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="on-hover-item nav-menu__item has-submenu"><span
-                                    class="badge-notification bg-tertiary-600 text-white text-sm py-2 px-8 rounded-4">New</span>
-                                <a href="javascript:void(0)" class="nav-menu__link">Vendors</a>
-                                <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-                                    <li class="common-dropdown__item nav-submenu__item"><a href="vendor.html"
-                                            class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Vendors</a>
-                                    </li>
-                                    <li class="common-dropdown__item nav-submenu__item"><a href="vendor-details.html"
-                                            class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Vendor
-                                            Details</a></li>
-                                    <li class="common-dropdown__item nav-submenu__item"><a href="vendor-two.html"
-                                            class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Vendors
-                                            Two</a></li>
-                                    <li class="common-dropdown__item nav-submenu__item"><a
-                                            href="vendor-two-details.html"
-                                            class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Vendors
-                                            Two Details</a></li>
-                                </ul>
-                            </li>
-                            <li class="on-hover-item nav-menu__item has-submenu"><a href="javascript:void(0)"
-                                    class="nav-menu__link">Blog</a>
-                                <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-                                    <li class="common-dropdown__item nav-submenu__item"><a href="blog.html"
-                                            class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Blog</a>
-                                    </li>
-                                    <li class="common-dropdown__item nav-submenu__item"><a href="blog-details.html"
-                                            class="common-dropdown__link nav-submenu__link hover-bg-neutral-100">Blog
-                                            Details</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-menu__item"><a href="contact.html" class="nav-menu__link">Contact Us</a></li>
-                        </ul>
                     </div>
                 </div>
                 <div class="header-right flex items-center">
                     <div class="select-dropdown-for-home-two xl:block hidden">
-                        <ul class="header-top__right style-two flex items-center flex-wrap">
-                            <li
-                                class="on-hover-item border-right-item border-right-item-sm-space has-submenu arrow-white">
-                                <a href="javascript:void(0)" class="selected-text text-heading text-sm py-8">Eng</a>
-                                <ul
-                                    class="selectable-text-list on-hover-dropdown common-dropdown common-dropdown--sm max-h-200 scroll-sm !px-0 py-8">
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag1.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> English</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag2.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> Japan</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag3.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> French</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag4.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> Germany</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag6.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> Bangladesh</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag5.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> South Korea</a></li>
-                                </ul>
-                            </li>
-                            <li
-                                class="on-hover-item border-right-item border-right-item-sm-space has-submenu arrow-white">
-                                <a href="javascript:void(0)" class="selected-text text-heading text-sm py-8">USD</a>
-                                <ul
-                                    class="selectable-text-list on-hover-dropdown common-dropdown common-dropdown--sm max-h-200 scroll-sm px-0 py-8">
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag1.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> USD</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag2.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> Yen</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag3.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> Franc</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag4.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> EURO</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag6.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> BDT</a></li>
-                                    <li><a href="javascript:void(0)"
-                                            class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex items-center gap-8 rounded-none"><img
-                                                src="images/flag5.png" alt="Image"
-                                                class="w-16 h-12 rounded-4 border border-gray-100"> WON</a></li>
-                                </ul>
-                            </li>
-                        </ul>
                     </div>
                     <div class="me-8 xl:hidden block">
                         <div class="header-two-activities flex items-center flex-wrap gap-32"><button type="button"
@@ -826,56 +569,91 @@
                     <div class="shop-sidebar"><button type="button"
                             class="shop-sidebar__close xl:hidden flex w-32 h-32 flex items-center justify-center border border-gray-100 rounded-[50%] hover-bg-main-600 absolute right-0 mr-[10px] mt-8 hover-text-white hover-border-main-600"><i
                                 class="ph ph-x"></i></button>
+                                
                         <div class="shop-sidebar__box border border-gray-100 rounded-8 p-32 mb-32">
                             <h6 class="text-xl border-b border-gray-100 pb-24 mb-24">Filter by Price</h6>
-                            <div class="custom--range">
-                                <div id="slider-range"></div>
-                                <div class="flex-between flex-wrap-reverse gap-8 mt-24"><button type="button"
-                                        class="btn btn-main h-40 flex items-center">Filter</button>
-                                    <div class="custom--range__content flex items-center gap-8"><span
-                                            class="text-gray-500 text-md flex-shrink-0">Price:</span> <input
-                                            class="custom--range__prices text-neutral-600 text-start text-md font-[500]"
-                                            id="amount" readonly="readonly"></div>
-                                </div>
-                            </div>
+                            <ul class="max-h-540 overflow-y-auto scroll-sm">
+                                <li class="mb-24">
+                                    <div class="form-check common-check common-radio">
+                                        <input class="form-check-input" type="radio" name="price_level" value="0-3000000" id="price1">
+                                        <label class="form-check-label" for="price1">0-3 triệu</label>
+                                    </div>
+                                </li>
+                                <li class="mb-24">
+                                    <div class="form-check common-check common-radio">
+                                        <input class="form-check-input" type="radio" name="price_level" value="3000000-5000000" id="price2">
+                                        <label class="form-check-label" for="price2">3-5 triệu</label>
+                                    </div>
+                                </li>
+                                <li class="mb-24">
+                                    <div class="form-check common-check common-radio">
+                                        <input class="form-check-input" type="radio" name="price_level" value="5000000-10000000" id="price3">
+                                        <label class="form-check-label" for="price3">5-10 triệu</label>
+                                    </div>
+                                </li>
+                                <li class="mb-24">
+                                    <div class="form-check common-check common-radio">
+                                        <input class="form-check-input" type="radio" name="price_level" value="10000000-15000000" id="price4">
+                                        <label class="form-check-label" for="price4">10-15 triệu</label>
+                                    </div>
+                                </li>
+                                <li class="mb-24">
+                                    <div class="form-check common-check common-radio">
+                                        <input class="form-check-input" type="radio" name="price_level" value="15000000-20000000" id="price5">
+                                        <label class="form-check-label" for="price5">15-20 triệu</label>
+                                    </div>
+                                </li>
+                                <li class="mb-24">
+                                    <div class="form-check common-check common-radio">
+                                        <input class="form-check-input" type="radio" name="price_level" value="20000000-30000000" id="price6">
+                                        <label class="form-check-label" for="price6">20-30 triệu</label>
+                                    </div>
+                                </li>
+                                <li class="mb-0">
+                                    <div class="form-check common-check common-radio">
+                                        <input class="form-check-input" type="radio" name="price_level" value="30000000+" id="price7">
+                                        <label class="form-check-label" for="price7">30+ triệu</label>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                         <div class="shop-sidebar__box border border-gray-100 rounded-8 p-32 mb-32">
                             <h6 class="text-xl border-b border-gray-100 pb-24 mb-24">Filter by Color</h6>
                             <ul class="max-h-540 overflow-y-auto scroll-sm">
                                 <li class="mb-24">
                                     <div class="form-check common-check common-radio checked-black"><input
-                                            class="form-check-input" type="radio" name="color" id="color1"> <label
-                                            class="form-check-label" for="color1">Black(12)</label></div>
+                                            class="form-check-input" type="radio" name="color" value="Đen" id="color1"> <label
+                                            class="form-check-label" for="color1">Đen</label></div>
                                 </li>
                                 <li class="mb-24">
                                     <div class="form-check common-check common-radio checked-primary"><input
-                                            class="form-check-input" type="radio" name="color" id="color2"> <label
-                                            class="form-check-label" for="color2">Blue (12)</label></div>
+                                            class="form-check-input" type="radio" name="color" value="Xanh dương" id="color2"> <label
+                                            class="form-check-label" for="color2">Xanh dương</label></div>
                                 </li>
                                 <li class="mb-24">
                                     <div class="form-check common-check common-radio checked-gray"><input
-                                            class="form-check-input" type="radio" name="color" id="color3"> <label
-                                            class="form-check-label" for="color3">Gray (12)</label></div>
+                                            class="form-check-input" type="radio" name="color" value="Xám" id="color3"> <label
+                                            class="form-check-label" for="color3">Xám</label></div>
                                 </li>
                                 <li class="mb-24">
                                     <div class="form-check common-check common-radio checked-success"><input
-                                            class="form-check-input" type="radio" name="color" id="color4"> <label
-                                            class="form-check-label" for="color4">Green (12)</label></div>
+                                            class="form-check-input" type="radio" name="color" value="Xanh lá" id="color4"> <label
+                                            class="form-check-label" for="color4">Xanh lá</label></div>
                                 </li>
                                 <li class="mb-24">
                                     <div class="form-check common-check common-radio checked-danger"><input
-                                            class="form-check-input" type="radio" name="color" id="color5"> <label
-                                            class="form-check-label" for="color5">Red (12)</label></div>
+                                            class="form-check-input" type="radio" name="color" value="Đỏ" id="color5"> <label
+                                            class="form-check-label" for="color5">Đó</label></div>
                                 </li>
                                 <li class="mb-24">
                                     <div class="form-check common-check common-radio checked-white"><input
-                                            class="form-check-input" type="radio" name="color" id="color6"> <label
-                                            class="form-check-label" for="color6">White (12)</label></div>
+                                            class="form-check-input" type="radio" name="color" value="Trắng" id="color6"> <label
+                                            class="form-check-label" for="color6">Trắng</label></div>
                                 </li>
                                 <li class="mb-0">
                                     <div class="form-check common-check common-radio checked-purple"><input
-                                            class="form-check-input" type="radio" name="color" id="color7"> <label
-                                            class="form-check-label" for="color7">Purple (12)</label></div>
+                                            class="form-check-input" type="radio" name="color" value="Tím" id="color7"> <label
+                                            class="form-check-label" for="color7">Tím</label></div>
                                 </li>
                             </ul>
                         </div>
@@ -884,32 +662,32 @@
                             <ul class="max-h-540 overflow-y-auto scroll-sm">
                                 <li class="mb-24">
                                     <div class="form-check common-check common-radio"><input class="form-check-input"
-                                            type="radio" name="color" id="brand1"> <label class="form-check-label"
+                                            type="radio" name="ram" value="3" id="brand1"> <label class="form-check-label"
                                             for="brand1">3GB</label></div>
                                 </li>
                                 <li class="mb-24">
                                     <div class="form-check common-check common-radio"><input class="form-check-input"
-                                            type="radio" name="color" id="brand2"> <label class="form-check-label"
+                                            type="radio" name="ram" value="4" id="brand2"> <label class="form-check-label"
                                             for="brand2">4GB</label></div>
                                 </li>
                                 <li class="mb-24">
                                     <div class="form-check common-check common-radio"><input class="form-check-input"
-                                            type="radio" name="color" id="brand3"> <label class="form-check-label"
+                                            type="radio" name="ram" value="6" id="brand3"> <label class="form-check-label"
                                             for="brand3">6GB</label></div>
                                 </li>
                                 <li class="mb-24">
                                     <div class="form-check common-check common-radio"><input class="form-check-input"
-                                            type="radio" name="color" id="brand4"> <label class="form-check-label"
+                                            type="radio" name="ram" value="8" id="brand4"> <label class="form-check-label"
                                             for="brand4">8GB</label></div>
                                 </li>
                                 <li class="mb-24">
                                     <div class="form-check common-check common-radio"><input class="form-check-input"
-                                            type="radio" name="color" id="brand5"> <label class="form-check-label"
+                                            type="radio" name="ram" value="12" id="brand5"> <label class="form-check-label"
                                             for="brand5">12GB</label></div>
                                 </li>
                                 <li class="mb-24">
                                     <div class="form-check common-check common-radio"><input class="form-check-input"
-                                            type="radio" name="color" id="DELL"> <label class="form-check-label"
+                                            type="radio" name="ram" value="16" id="DELL"> <label class="form-check-label"
                                             for="DELL">16GB</label></div>
                                 </li>
                             </ul>
@@ -919,22 +697,22 @@
                             <ul class="max-h-540 overflow-y-auto scroll-sm">
                                 <li class="mb-24">
                                     <div class="form-check common-check common-radio"><input class="form-check-input"
-                                            type="radio" name="color" id="brand1"> <label class="form-check-label"
+                                            type="radio" name="capacity" value="64" id="brand1"> <label class="form-check-label"
                                             for="brand1">64GB</label></div>
                                 </li>
                                 <li class="mb-24">
                                     <div class="form-check common-check common-radio"><input class="form-check-input"
-                                            type="radio" name="color" id="brand2"> <label class="form-check-label"
+                                            type="radio" name="capacity" value="128" id="brand2"> <label class="form-check-label"
                                             for="brand2">128GB</label></div>
                                 </li>
                                 <li class="mb-24">
                                     <div class="form-check common-check common-radio"><input class="form-check-input"
-                                            type="radio" name="color" id="brand3"> <label class="form-check-label"
+                                            type="radio" name="capacity" value="256" id="brand3"> <label class="form-check-label"
                                             for="brand3">256GB</label></div>
                                 </li>
                                 <li class="mb-24">
                                     <div class="form-check common-check common-radio"><input class="form-check-input"
-                                            type="radio" name="color" id="brand4"> <label class="form-check-label"
+                                            type="radio" name="capacity" value="512" id="brand4"> <label class="form-check-label"
                                             for="brand4">512GB</label></div>
                                 </li>
                             </ul>
@@ -943,8 +721,7 @@
                     </div>
                 </div>
                 <div class="xl:w-9/12 flex-grow-0 flex-shrink-0 basis-auto">
-                    <div class="flex-between gap-16 flex-wrap mb-40"><span class="text-gray-900">Trang 
-                            result</span>
+                    <div class="flex-between gap-16 flex-wrap mb-40"><span class="text-gray-900">Hiển thị {{sizeof($products)}} sản phẩm</span>
                         <div class="relative flex items-center gap-16 flex-wrap">
                             <div class="list-grid-btns flex items-center gap-16"><button type="button"
                                     class="w-44 h-44 flex items-center justify-center border border-gray-100 rounded-6 text-2xl list-btn"><i
@@ -952,15 +729,17 @@
                                     class="w-44 h-44 flex items-center justify-center border border-main-600 text-white bg-main-600 rounded-6 text-2xl grid-btn"><i
                                         class="ph ph-squares-four"></i></button></div>
                             <div class="relative text-gray-500 flex items-center gap-4 text-14"><label for="sorting"
-                                    class="text-inherit flex-shrink-0">Sort by:</label> <select
+                                    class="text-inherit flex-shrink-0">Sắp xếp theo: </label> <select
                                     class="form-control block w-full p-[0.375rem_0.75rem] text-base leading-6 text-[#495057] bg-white bg-clip-padding border border-[#ced4da] rounded transition-all duration-150 ease-in-out focus:text-[#495057] focus:bg-white focus:border-main focus:outline-0 focus:shadow-none common-input px-14 py-14 text-inherit rounded-6 w-auto"
-                                    id="sorting">
-                                    <option value="1">Mới nhất</option>
-                                    <option value="2">A-Z</option>
-                                    <option value="3">Z-A</option>
-                                    <option value="4">Giá thấp - cao</option>
-                                    <option value="5">Giá cao - thấp</option>
-                                </select></div><button type="button"
+                                    id="sorting" onchange="sortingProducts(this)">
+                                    <option hidden>Sắp xếp</option>
+                                    <option value="1" <?php if(isset($_GET['sort'])) if ($_GET['sort'] == 1) echo "selected" ?>>Mới nhất</option>
+                                    <option value="2" <?php if(isset($_GET['sort'])) if ($_GET['sort'] == 2) echo "selected" ?>>A-Z</option>
+                                    <option value="3" <?php if(isset($_GET['sort'])) if ($_GET['sort'] == 3) echo "selected" ?>>Z-A</option>
+                                    <option value="4" <?php if(isset($_GET['sort'])) if ($_GET['sort'] == 4) echo "selected" ?>>Giá thấp - cao</option>
+                                    <option value="5" <?php if(isset($_GET['sort'])) if ($_GET['sort'] == 5) echo "selected" ?>>Giá cao - thấp</option>
+                                </select></div>
+                                <button type="button"
                                 class="w-44 h-44 xl:hidden flex flex items-center justify-center border border-gray-100 rounded-6 text-2xl sidebar-btn"><i
                                     class="ph-bold ph-funnel"></i></button>
                         </div>
@@ -972,9 +751,6 @@
                             <a href="/san-pham/{{$product['slug_vi']}}"
                                 class="product-card__thumb flex items-center justify-center rounded-8 bg-gray-50 relative"><img
                                     src="/{{$product['thumbnail']}}" alt="Image" class="!w-auto max-w-[unset]"> 
-                                    {{-- <span
-                                    class="product-card__badge bg-primary-600 px-8 py-4 text-sm text-white absolute inset-inline-start-0 inset-block-start-0">Best
-                                    Sale</span> --}}
                                 </a>
                             <div class="product-card__content mt-16">
                                 <h6 class="title text-lg font-[600] mt-12 mb-8"><a href="/san-pham/{{$product['slug_vi']}}"
@@ -993,7 +769,6 @@
                                     </div><span class="text-gray-900 text-xs font-[500] mt-8">Sold: 18/35</span>
                                 </div>
                                 <div class="product-card__price my-20">
-                                    {{-- <span class="text-gray-400 text-md font-[600] text-decoration-line-through">$28.99</span> --}}
                                     <span class="text-heading text-md font-[600]">{{ number_format($product['price']) }}đ</span></div><a
                                     href="cart.html"
                                     class="product-card__cart btn bg-gray-50 text-heading hover-bg-main-600 hover-text-white py-11 px-24 rounded-8 flex items-center justify-center gap-8 font-[500]"
@@ -1002,8 +777,11 @@
                         </div>
                         @endforeach
                     </div>
+                    {{-- @if (array_key_exists('sort', $_GET)) --}}
+                    <div class="text-lg">{{ $products->appends($_GET)->links('pagination::tailwind') }}</div>
+                    {{-- @else
                     <div class="text-lg">{{ $products->links('pagination::tailwind') }}</div>
-                    
+                    @endif --}}
                 </div>
             </div>
         </div>
@@ -1205,6 +983,45 @@
             </div>
         </div>
     </div>
+    <script>
+        // Function to update a specific query parameter without affecting others
+        function updateURLParameter(paramName, paramValue) {
+            const url = new URL(window.location.href);
+            url.searchParams.set(paramName, paramValue); // Set or update the parameter
+            window.open(url.toString(), "_self"); // Redirect to the updated URL in the same tab
+        }
+
+        // Attach event listeners to color radio buttons
+        document.querySelectorAll('input[name="color"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const selectedColor = radio.value;
+                updateURLParameter('color', selectedColor);
+            });
+        });
+
+        // Attach event listeners to ram radio buttons
+        document.querySelectorAll('input[name="ram"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const selectedRam = radio.value;
+                updateURLParameter('ram', selectedRam);
+            });
+        });
+
+        // Attach event listeners to capacity radio buttons
+        document.querySelectorAll('input[name="capacity"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const selectedCapacity = radio.value;
+                updateURLParameter('capacity', selectedCapacity);
+            });
+        });
+        // Attach event listeners to price level radio buttons
+        document.querySelectorAll('input[name="price_level"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const selectedPrice = radio.value;
+                updateURLParameter('price_level', selectedPrice);
+            });
+        });
+    </script>
 </body>
 
 </html>

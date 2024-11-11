@@ -159,3 +159,131 @@ function submitComment(product_id) {
         alert('Làm ơn hãy nhập đây đủ thông tin để tạo bình luận');
     }
 }
+
+function sortingProducts(sortOption) {
+    switch (sortOption.value) {
+        case "1":
+            window.open(window.location.href.split('?')[0] + "?sort=1", "_self");
+            break;
+        case "2":
+            window.open(window.location.href.split('?')[0] + "?sort=2", "_self");
+            break;
+        case "3":
+            window.open(window.location.href.split('?')[0] + "?sort=3", "_self");
+            break;
+        case "4":
+            window.open(window.location.href.split('?')[0] + "?sort=4", "_self");
+            break;
+        case "5":
+            window.open(window.location.href.split('?')[0] + "?sort=5", "_self");
+            break;
+        default:
+            break;
+    }
+}
+
+// function searchProduct(searchBar) {
+//     const dropdown = document.querySelector("#dropdown");
+
+//     // Get bounding rectangles for both the search input and button
+//     const searchBarRect = searchBar.getBoundingClientRect();
+//     const searchButton = searchBar.nextElementSibling;  // Assumes button is immediately after input
+//     const buttonRect = searchButton.getBoundingClientRect();
+
+//     // Calculate total width (input + button + 30px extra)
+//     const dropdownWidth = searchBarRect.width + buttonRect.width + 30;
+
+//     // Set dropdown position and width
+//     dropdown.style.top = `${searchBarRect.bottom + window.scrollY}px`;
+//     dropdown.style.left = `${searchBarRect.left + window.scrollX}px`;
+//     dropdown.style.width = `${dropdownWidth}px`;
+
+//     if (searchBar.value.trim() !== "") {
+//         dropdown.classList.remove("hidden");
+//         $.ajax({
+//             type: "POST",
+//             headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') },
+//             dataType: "JSON",
+//             data: { product_name: searchBar.value },
+//             url: "/tim-kiem-san-pham",
+//             success: function (result) {
+//                 let html = '';
+//                 result.products.forEach(product => {
+//                     const colorHtml = product.color ? ` - ${product.color}` : '';
+//                     const editionHtml = product.edition ? ` - ${product.edition}` : '';
+//                     const path = product.thumbnail ? `http://127.0.0.1:8000/${product.thumbnail}` : '';
+//                     html += `
+//                         <li class="px-4 py-2 cursor-pointer hover:bg-gray-100">
+//                             <a href="/san-pham/${product.slug}" class="flex gap-4" style="text-decoration: none; color: inherit">
+//                                 <img class="w-14 md:w-20" src="${path}">
+//                                 <div>
+//                                     <div>${product.product_name}${editionHtml}${colorHtml}</div>
+//                                     <div class="text-red-500 text-sm font-semibold">${product.price.toLocaleString()}đ</div>
+//                                 </div>
+//                             </a>
+//                         </li>`;
+//                 });
+//                 dropdown.querySelector("ul").innerHTML = html;
+//             }
+//         });
+//     } else {
+//         dropdown.classList.add("hidden");
+//     }
+// }
+
+function searchProduct(searchBar) {
+    const dropdown = document.querySelector("#dropdown");
+
+    // Ensure the dropdown and search button are found
+    if (!dropdown) return;
+
+    // Use querySelector to find the search button within the same form as the searchBar
+    const form = searchBar.closest("form");
+    const searchButton = form ? form.querySelector("button[type='submit']") : null;
+
+    // Check that both searchBar and searchButton exist
+    if (searchBar && searchButton) {
+        const searchBarRect = searchBar.getBoundingClientRect();
+        const buttonRect = searchButton.getBoundingClientRect();
+
+        // Calculate total width (input + button + 30px extra)
+        const dropdownWidth = searchBarRect.width + buttonRect.width + 30;
+
+        // Set dropdown position and width
+        dropdown.style.top = `${searchBarRect.bottom + window.scrollY}px`;
+        dropdown.style.left = `${searchBarRect.left + window.scrollX}px`;
+        dropdown.style.width = `${dropdownWidth}px`;
+    }
+
+    if (searchBar.value.trim() !== "") {
+        dropdown.classList.remove("hidden");
+        $.ajax({
+            type: "POST",
+            headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') },
+            dataType: "JSON",
+            data: { product_name: searchBar.value },
+            url: "/tim-kiem-san-pham",
+            success: function (result) {
+                let html = '';
+                result.products.forEach(product => {
+                    const colorHtml = product.color ? ` - ${product.color}` : '';
+                    const editionHtml = product.edition ? ` - ${product.edition}` : '';
+                    const path = product.thumbnail ? `http://127.0.0.1:8000/${product.thumbnail}` : '';
+                    html += `
+                        <li class="px-4 py-2 cursor-pointer hover:bg-gray-100">
+                            <a href="/san-pham/${product.slug_vi}" class="flex gap-4">
+                                <img class="w-64 md:w-36" src="${path}">
+                                <div>
+                                    <div>${product.product_name}${editionHtml}${colorHtml}</div>
+                                    <div class="text-red-500 text-sm font-semibold">${product.price.toLocaleString()}đ</div>
+                                </div>
+                            </a>
+                        </li>`;
+                });
+                dropdown.querySelector("ul").innerHTML = html;
+            }
+        });
+    } else {
+        dropdown.classList.add("hidden");
+    }
+}
