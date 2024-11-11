@@ -9,16 +9,13 @@ use Illuminate\Support\Str;
 class ProductService {
     public function create($request) {
         $thumbnailPath = NULL;
-        $slug_vi = Str::slug((string) $request->input('product_name') . ' ' . (string) $request->input('edition'), '-');
+        $slug_vi = Str::slug((string) $request->input('product_name') . ' ' . (string) $request->input('edition') . ' ' . (string) $request->input('color'), '-');
         $description = NULL;
         $imgPaths = NULL;
 
         try {
             if ($request->input('thumbnail') != "") {
                 $thumbnailPath = 'storage/images/products/'.$slug_vi.'/'.$request->input('thumbnail');
-            }
-            if (Product::where('slug', $slug_vi)->first() != NULL ) {
-                $slug_vi = Str::slug($slug_vi.' '.(string) $request->input('color'), '-');
             }
             if ($request->input('description') != "") {
                 $description = base64_encode($request->input('description'));
@@ -133,17 +130,7 @@ class ProductService {
     public function getProductListById(array $array) {
         return Product::whereIn('id', $array)->get();
     }
-    public function sortProducts($option) {
-        switch ($option) {
-            case 1:
-                // return Product
-                break;
-            
-            default:
-                # code...
-                break;
-        }
-    }
+
     public function update($request, $product) {
         try {
             $oldThumbnailPath = $request->input('oldThumbnailPath');

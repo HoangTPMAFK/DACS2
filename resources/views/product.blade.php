@@ -217,39 +217,66 @@
                                         & Privacy <i class="ph ph-caret-right"></i></a></div><span
                                     class="mt-32 pt-32 text-gray-700 border-t border-gray-100 block"></span>
                                 <div class="mt-32">
-                                    <h6 class="mb-16">Quick Overview</h6>
+                                    <h6 class="mb-16">Tổng quan sản phẩm</h6>
                                     <div class="flex-between items-start flex-wrap gap-16">
-                                        <div><span class="text-gray-900 block mb-12">Color: <span
+                                        <div><span class="text-gray-900 block mb-12">Màu: <span
                                                     class="font-[500]">{{ $product['color'] }}</span></span>
-                                            <div class="color-list flex items-center gap-8"><button type="button"
-                                                    class="color-list__button w-20 h-20 border-2 border-gray-50 rounded-[50%] bg-info-600"></button>
-                                                <button type="button"
-                                                    class="color-list__button w-20 h-20 border-2 border-gray-50 rounded-[50%] bg-warning-600"></button>
-                                                <button type="button"
-                                                    class="color-list__button w-20 h-20 border-2 border-gray-50 rounded-[50%] bg-tertiary-600"></button>
-                                                <button type="button"
-                                                    class="color-list__button w-20 h-20 border-2 border-gray-50 rounded-[50%] bg-main-600"></button>
-                                                <button type="button"
-                                                    class="color-list__button w-20 h-20 border-2 border-gray-50 rounded-[50%] bg-gray-100"></button>
+                                            <div class="color-list flex items-center gap-8">
+                                                @foreach ($editions as $edition)
+                                                @switch($edition['color'])
+                                                    @case("Xanh dương")
+                                                        <button type="button" onclick="javascript:window.location.href='/san-pham/{{ $edition['slug_vi'] }}"
+                                                        class="color-list__button w-20 h-20 border-2 border-gray-50 rounded-[50%] bg-info-600"></button>
+                                                        @break
+                                                    @case("Xanh lá")
+                                                        <button type="button" onclick="javascript:window.location.href='/san-pham/{{ $edition['slug_vi'] }}"
+                                                        class="color-list__button w-20 h-20 border-2 border-gray-50 rounded-[50%] bg-success-600"></button>
+                                                        @break
+                                                    @case("Đỏ")
+                                                        <button type="button" onclick="javascript:window.location.href='/san-pham/{{ $edition['slug_vi'] }}"
+                                                        class="color-list__button w-20 h-20 border-2 border-gray-50 rounded-[50%] bg-error-600"></button>
+                                                        @break
+                                                    @case("Vàng")
+                                                        <button type="button" onclick="javascript:window.location.href='/san-pham/{{ $edition['slug_vi'] }}"
+                                                        class="color-list__button w-20 h-20 border-2 border-gray-50 rounded-[50%] bg-warning-600"></button>
+                                                        @break
+                                                    @case("Trắng")
+                                                        <button type="button" onclick="javascript:window.location.href='/san-pham/{{ $edition['slug_vi'] }}"
+                                                        class="color-list__button w-20 h-20 border-2 border-gray-50 rounded-[50%] bg-white"></button>
+                                                        @break
+                                                    @case("Tím")
+                                                        <button type="button" onclick="javascript:window.location.href='/san-pham/{{ $edition['slug_vi'] }}"
+                                                        class="color-list__button w-20 h-20 border-2 border-gray-50 rounded-[50%] bg-tertiary-600"></button>
+                                                        @break
+                                                    @case("Xám")
+                                                        <button type="button" onclick="javascript:window.location.href='/san-pham/{{ $edition['slug_vi'] }}"
+                                                        class="color-list__button w-20 h-20 border-2 border-gray-50 rounded-[50%] bg-gray-100"></button>
+                                                        @break
+                                                    @case("Đen")
+                                                        <button type="button" onclick="javascript:window.location.href='/san-pham/{{ $edition['slug_vi'] }}"
+                                                        class="color-list__button w-20 h-20 border-2 border-gray-50 rounded-[50%] bg-black"></button>
+                                                        @break
+                                                    @default
+                                                        
+                                                @endswitch
+                                                @endforeach
                                             </div>
                                         </div>
                                         <div><span class="text-gray-900 block mb-12">Phiên bản: <span
                                                     class="font-[500]">{{ $product['edition'] }}</span></span>
-                                            <div class="flex items-center gap-8 flex-wrap"><a href="index.html"
-                                                    class="px-12 py-8 text-sm rounded-8 text-gray-900 border border-gray-200 hover-border-main-600 hover-text-main-600">with
-                                                    offer </a><a href="index.html"
-                                                    class="px-12 py-8 text-sm rounded-8 text-gray-900 border border-gray-200 hover-border-main-600 hover-text-main-600">12th
-                                                    Gen Laptop</a> <a href="index.html"
-                                                    class="px-12 py-8 text-sm rounded-8 text-gray-900 border border-gray-200 hover-border-main-600 hover-text-main-600">without
-                                                    offer</a></div>
+                                            <div class="flex items-center gap-8 flex-wrap">
+                                                @foreach ($editions as $edition)
+                                                <a href="/san-pham/{{$edition['slug_vi']}}"
+                                                    class="px-12 py-8 text-sm rounded-8 text-gray-900 border border-gray-200 hover-border-main-600 hover-text-main-600">{{ $edition['edition'] }}</a>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                 </div><span class="mt-32 pt-32 text-gray-700 border-t border-gray-100 block"></span> <a
                                     href="https://www.whatsapp.com"
                                     class="btn btn-black flex items-center justify-center gap-8 rounded-8 py-16"><i
-                                        class="ph ph-whatsapp-logo text-lg"></i> Request More Information</a>
-                                <div class="mt-32"><span class="font-[500] text-gray-900">100% Guarantee Safe
-                                        Checkout</span>
+                                        class="ph ph-whatsapp-logo text-lg"></i> Cần Thêm Thông Tin</a>
+                                <div class="mt-32"><span class="font-[500] text-gray-900">Đảm bảo 100% thanh toán an toàn</span>
                                     <div class="mt-10"><img src="images/gateway-img.png" alt="Image"></div>
                                 </div>
                             </div>
@@ -356,14 +383,14 @@
                             <li class="nav-item" role="presentation"><button class="nav-link bt-tb-btn active"
                                     data-target="#pills-description" id="pills-description-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-description" type="button" role="tab"
-                                    aria-controls="pills-description" aria-selected="true">Description</button></li>
+                                    aria-controls="pills-description" aria-selected="true">Mô tả</button></li>
                             <li class="nav-item" role="presentation"><button class="nav-link bt-tb-btn"
                                     data-target="#pills-reviews" id="pills-reviews-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-reviews" type="button" role="tab"
-                                    aria-controls="pills-reviews" aria-selected="false">Reviews</button></li>
+                                    aria-controls="pills-reviews" aria-selected="false">Đánh giá</button></li>
                         </ul><a href="index.html"
                             class="btn bg-color-one rounded-16 flex items-center gap-8 text-main-600 hover-bg-main-600 hover-text-white"><img
-                                src="images/satisfaction-icon.png" alt="Image"> 100% Satisfaction Guaranteed</a>
+                                src="images/satisfaction-icon.png" alt="Image"> Đảm bảo 100% thanh toán an toàn</a>
                     </div>
                     <div class="product-dContent__box">
                         <div class="tab-content" id="pills-tabContent">

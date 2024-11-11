@@ -23,20 +23,26 @@ function removeRow(id, url) {
         })
     }
 }
-
-function convertToSlug(Text) {
-    return Text.toLowerCase()
-      .replace(/ /g, "-")
-      .replace(/[^\w-]+/g, "");
+function convertToSlug(text) {
+    return text
+      .toLowerCase()                     // Convert to lowercase
+      .trim()                             // Remove leading/trailing spaces
+      .replace(/\s+/g, '-')               // Replace multiple spaces with a single hyphen
+      .replace(/[^a-z0-9-]/g, '')         // Remove non-alphanumeric characters (except hyphens)
+      .replace(/-+/g, '-')                // Replace multiple hyphens with a single hyphen
+      .replace(/^-|-$/g, '');             // Remove leading/trailing hyphens
   }
 
 function uploadImg(imgInput) {
     // console.log(imgInput.files[0].name);
     
-    let slug = convertToSlug((document.querySelector("#product_name").value).trim());
+    let slug = convertToSlug((document.querySelector("#product_name").value));
     if (slug.length != 0) {
         if (document.querySelector("#edition").value.length != 0) {
-            slug = convertToSlug(slug + " " + document.querySelector("#edition").value.trim());
+            slug = convertToSlug(slug + " " + document.querySelector("#edition").value);
+        }
+        if (document.querySelector("#color").value.length != 0) {
+            slug = convertToSlug(slug + " " + document.querySelector("#color").value.trim());
         }
         console.log(imgInput.files.length);
         for (let i = 0; i < imgInput.files.length; i++) {
@@ -72,6 +78,9 @@ function uploadThumbnail(imgInput) {
     if (slug.length != 0) {
         if (document.querySelector("#edition").value.length != 0) {
             slug = convertToSlug(slug + " " + document.querySelector("#edition").value.trim());
+        }
+        if (document.querySelector("#color").value.length != 0) {
+            slug = convertToSlug(slug + " " + document.querySelector("#color").value.trim());
         }
         const form = new FormData();
         form.append('file', imgInput.files[0]);

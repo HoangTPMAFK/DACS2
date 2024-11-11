@@ -61,11 +61,13 @@ class HomeController extends Controller
     public function product($slug) {
         $product = $this->productService->getCustomerProducts('slug_vi', $slug)->attributesToArray();
         $comments = $this->commentService->get($product['id']);
+        $editions = $this->productService->getCustomerProducts('product_name', $product['product_name']);
         return view('product', [
             'title' => $product['product_name'],
             'product' => $product,
             'comments' => $comments,
             'vendors' => $this->categoryService->getVendors(),
+            'editions' => $editions,
         ]);
     }
     public function myaccount() {
