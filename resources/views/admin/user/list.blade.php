@@ -50,7 +50,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="text-lg">{{ $users->links() }}</div>
+                        <div class="text-lg">{{ $users->links('pagination::tailwind2') }}</div>
                     </div>
                     <p class="pt-3 text-gray-600">
                         Source: <a class="underline" href="https://tailwindcomponents.com/component/striped-table">https://tailwindcomponents.com/component/striped-table</a>

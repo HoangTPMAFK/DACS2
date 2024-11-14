@@ -51,13 +51,18 @@
                                 <input class="p-2 border border-slate-300" type="text" name="total_price" id="" value="{{$order['total_price']}}" disabled>
                             </div>
                             <div class="w-full mb-8 md:w-1/3">
-                                <span>Trạng thái đơn hàng</span>
-                                <select class="p-2 border border-slate-300" name="state" id="state">
-                                    <option value="Đang giao" <?php if ($order['state'] == "Đang giao") echo "selected"; ?>>Đang giao</option>
-                                    <option value="Đã giao" <?php if ($order['state'] == "Đã giao") echo "selected"; ?>>Đã giao</option>
-                                    <option value="Đã hủy" <?php if ($order['state'] == "Đã hủy") echo "selected"; ?>>Đã hủy</option>
-                                    <option value="Đã hoàn trả" <?php if ($order['state'] == "Đã hoàn trả") echo "selected"; ?>>Đã hoàn trả</option>
-                                    <option value="Từ chối" <?php if ($order['state'] == "Từ chối") echo "selected"; ?>>Từ chối</option>
+                                <span>Trạng thái thanh toán</span>
+                                <select class="p-2 border border-slate-300" name="paymentStatus" id="paymentStatus">
+                                    <option value="Chưa thanh toán" <?php if ($order['paymentStatus'] == "Chưa thanh toán") echo "selected"; ?>>Chưa thanh toán</option>
+                                    <option value="Đã thanh toán" <?php if ($order['paymentStatus'] == "Đã thanh toán") echo "selected"; ?>>Đã thanh toán</option>
+                                    <option value="Đã hoàn tiền" <?php if ($order['paymentStatus'] == "Đã hoàn tiền") echo "selected"; ?>>Đã hoàn tiền</option>
+                                </select>
+                            </div>
+                            <div class="w-full mb-8 md:w-1/3">
+                                <span>Trạng thái vận chuyển</span>
+                                <select class="p-2 border border-slate-300" name="deliveryStatus" id="deliveryStatus">
+                                    <option value="Đang giao" <?php if ($order['deliveryStatus'] == "Đang giao") echo "selected"; ?>>Đang giao</option>
+                                    <option value="Đã giao" <?php if ($order['deliveryStatus'] == "Đã giao") echo "selected"; ?>>Đã giao</option>
                                 </select>
                             </div>
                         </div>

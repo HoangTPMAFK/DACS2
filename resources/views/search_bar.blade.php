@@ -2,7 +2,7 @@
     <div class="container container-lg">
         <nav class="header-inner flex-between">
             <div class="logo">
-                <a href="index.html" class="link"><img src="images/logo-two.png" alt="Logo"></a>
+                <a href="/" class="link"><img src="images/logo-two.png" alt="Logo"></a>
             </div>
             <div class="flex items-center md:gap-[16px] max-sm:gap-0">
                 <form action="index-two.html#" class="flex items-center flex-wrap form-location-wrapper relative">

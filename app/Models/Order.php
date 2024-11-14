@@ -17,7 +17,7 @@ class Order extends Model
         'district',
         'address',
         'total_price',
-        'state',
-        'isPaid'
+        'deliveryStatus',
+        'paymentStatus'
     ];
 }

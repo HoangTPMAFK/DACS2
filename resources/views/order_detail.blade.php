@@ -135,7 +135,6 @@
                             <table class="table style-three">
                                 <thead>
                                     <tr>
-                                        <th class="h6 mb-0 text-lg font-[700]">Xóa</th>
                                         <th class="h6 mb-0 text-lg font-[700]">Tên sản phẩm</th>
                                         <th class="h6 mb-0 text-lg font-[700]">Giá</th>
                                         <th class="h6 mb-0 text-lg font-[700]">Số luợng</th>
@@ -143,11 +142,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($cart as $item)
+                                    @foreach ($products as $item)
                                     <tr>
-                                        <td><button type="button"
-                                                class="remove-tr-btn flex items-center gap-12 hover-text-danger-600"><i
-                                                    class="ph ph-x-circle text-2xl flex"></i> Remove</button></td>
                                         <td>
                                             <div class="table-product flex items-center gap-24"><a
                                                     href="/san-pham/{{$item['getProduct']['slug_vi']}}"
@@ -183,25 +179,16 @@
                                         <td><span class="text-lg h6 mb-0 font-[600]">{{ number_format($item['getProduct']['price']) }} đ</span></td>
                                         <td>
                                             <div class="flex rounded-4 overflow-hidden">
-                                                    <button type="button"
-                                                    class="quantity__minus border border-r border-gray-100 flex-shrink-0 h-48 w-48 text-neutral-600 flex items-center justify-center hover-bg-main-600 hover-text-white"><i
-                                                        class="ph ph-minus"></i></button> 
-                                                    <input type="number" name="quantity[]" value="{{ $item['quantity'] }}"
-                                                    class="quantity__input flex-grow border border-gray-100 border-l-0 border-r-0 text-center w-32 px-4"
-                                                    value="1" min="1"> 
-                                                    <button type="button"
-                                                    class="quantity__plus border border-r border-gray-100 flex-shrink-0 h-48 w-48 text-neutral-600 flex items-center justify-center hover-bg-main-600 hover-text-white"><i
-                                                        class="ph ph-plus"></i></button></div>
+                                                <input type="number" name="quantity[]" value="{{ $item['quantity'] }}"
+                                                class="quantity__input flex-grow border border-gray-100 border-l-0 border-r-0 text-center w-32 px-4"
+                                                value="1" min="1" readonly> 
+                                            </div>
                                         </td>
                                         <td><span class="product_subtotal text-lg h6 mb-0 font-[600]">{{ number_format($item['getProduct']['price'] * $item['quantity']) }} đ</span></td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="flex-between flex-wrap gap-16 mt-16">
-                            <div class="flex items-center gap-16"></div>
-                            <button type="submit" class="text-lg text-gray-500 hover-text-main-600">Cập nhật</button>
                         </div>
                     </div>
                 </form>
@@ -210,61 +197,42 @@
                         @include('voucher_error')
                         <form action="/gio-hang/kiem-tra-ma-giam-gia" method="post" class="flex-between flex-wrap gap-16 mb-16">
                             @csrf
-                            <div class="flex items-center gap-16"><input class="common-input" placeholder="Mã giảm giá" name="voucher_code">
-                                <button type="submit" class="btn btn-main py-18 w-1/2 min-w-30 rounded-8">Áp dụng</button>
+                            <div class="flex items-center gap-16 font-semibold text-black">
+                                Địa chỉ: {{$order['province'].', '.$order['district'].', '.$order['address']}}
                             </div>
-                            <a href="/ma-giam-gia" class="text-main-500">Tìm thêm mã giảm giá</a>
                         </form>
-                        <h6 class="text-xl mb-32">Tổng giá trị giỏ hàng</h6>
+                        <h6 class="text-xl mb-32">Giá trị đơn hàng</h6>
                         <div class="bg-color-three rounded-8 p-24">
                             <div class="mb-32 flex-between gap-8"><span
-                                    class="text-gray-900 font-heading-two">Tổng cộng</span> <span
-                                    class="text-gray-900 font-[600]">{{ number_format($totalPrice)." đ" }}</span>
+                                    class="text-gray-900 font-heading-two">Tên khách hàng</span> <span
+                                    class="text-gray-900 font-[600]">{{ $order['customer_name'] }}</span>
                             </div>
-                            <div class="mb-32 flex-between gap-8"><span class="text-gray-900 font-heading-two">Phí vận chuyển</span> <span class="text-gray-900 font-[600]">Miễn phí</span></div>
-                            @if (Illuminate\Support\Facades\Session::has('voucher'))
-                                <div class="mb-0 flex-between gap-8">
-                                    <span class="text-gray-900 font-heading-two">Giảm còn</span>
-                                    @php
-                                        $voucher = Illuminate\Support\Facades\Session::get('voucher');
-                                        $totalPriceOriginal = $totalPrice; // Store the original price for later calculation
-
-                                        if ($voucher->allProduct) {
-                                            if ($voucher->unit == "%") {
-                                                $discountAmount = $voucher->discountAmount / 100 * $totalPriceOriginal;
-                                                if ($voucher->maxDiscount > 0) {
-                                                    $discountAmount = min($discountAmount, $voucher->maxDiscount);
-                                                }
-                                                $totalPrice -= $discountAmount;
-                                            } else {
-                                                $totalPrice -= $voucher->discountAmount;
-                                            }
-                                        } else {
-                                            $promotedProductList = json_decode($voucher->productsList);
-                                            $discountAmount = 0;
-                                            foreach (json_decode(json_encode($cart)) as $item) {
-                                                if (in_array($item->product_id, $promotedProductList)) {
-                                                    if ($voucher->unit == "%") {
-                                                        $discountAmount += ($voucher->discountAmount / 100) * $item->get_product->price;
-                                                    } else {
-                                                        $discountAmount += $voucher->discountAmount;
-                                                    }
-                                                }
-                                            }
-                                            if ($voucher->maxDiscount > 0) {
-                                                $discountAmount = min($discountAmount, $voucher->maxDiscount);
-                                            }
-                                            $totalPrice -= $discountAmount;
-                                        }
-                                    @endphp
-                                    <span class="text-gray-900 font-[600]">{{ number_format($totalPrice)." đ" }}</span>
-                                </div>
+                            <div class="mb-32 flex-between gap-8"><span
+                                class="text-gray-900 font-heading-two" style="min-width: 54px">Địa chỉ</span> <span
+                                class="text-gray-900 font-[600]">{{$order['province'].', '.$order['district'].', '.$order['address']}}</span>
+                            </div>
+                            <div class="mb-32 flex-between gap-8"><span
+                                class="text-gray-900 font-heading-two">Ngày tạo</span> <span
+                                class="text-gray-900 font-[600]">{{$order['created_at']}}</span>
+                            </div>
+                            <div class="mb-32 flex-between gap-8"><span
+                                class="text-gray-900 font-heading-two">SĐT</span> <span
+                                class="text-gray-900 font-[600]">{{$order['phone']}}</span>
+                            </div>
+                            @if (!is_null($order['email']))
+                            <div class="mb-32 flex-between gap-8"><span
+                                class="text-gray-900 font-heading-two" style="min-width: 54px">Email</span> <span
+                                class="text-gray-900 font-[600]">{{$order['email']}}</span>
+                            </div>
                             @endif
                         </div>
                         <div class="bg-color-three rounded-8 p-24 mt-24">
                             <div class="flex-between gap-8"><span class="text-gray-900 text-xl font-[600]">Tổng cộng</span>
-                                <span class="text-gray-900 text-xl font-[600]">{{ number_format($totalPrice)." đ" }}</span></div>
-                        </div><a href="/thanh-toan" class="btn btn-main mt-40 py-18 w-full rounded-8">Thanh toán</a>
+                                <span class="text-gray-900 text-xl font-[600]">{{ number_format($order['total_price'])." đ" }}</span></div>
+                        </div><form action="/cap-nhat-don-hang/{{$order['order_code']}}" method="post" class="btn btn-main mt-40 w-full rounded-8" style="padding: 0">
+                            @csrf
+                            <button type="submit" class="w-full py-18">Đã nhận</button>
+                        </form>
                     </div>
                 </div>
             </div>

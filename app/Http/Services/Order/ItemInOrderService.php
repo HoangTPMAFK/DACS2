@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class ItemInOrderService {
-    public function get($id = NULL) {
-        
-    }
     public function create($request) {
         try {
             for ($i = 0; $i < sizeof($request->input('product_id')); $i++) {
@@ -24,7 +21,9 @@ class ItemInOrderService {
             Session::flash('error', $err->getMessage());
             return false;
         }
-        
+    }
+    public function get($order_code) {
+        return ItemInOrder::where('order_code', $order_code)->get();
     }
     public function destroy($request) {
         $order_code = $request->input('order_code');

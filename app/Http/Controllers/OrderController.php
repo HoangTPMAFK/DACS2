@@ -8,6 +8,7 @@ use App\Http\Services\Order\ItemInOrderService;
 use App\Http\Services\Order\OrderService;
 use App\Http\Services\Cart\CartService;
 use App\Http\Services\Category\CategoryService;
+use App\Http\Services\Product\ProductService;
 use App\Models\ItemInOrder;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
@@ -26,12 +27,22 @@ class OrderController extends Controller
         $this->cartService = $cartService;
         $this->categoryService = $categoryService;
     }
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+
+    public function orderlist() {
+        return view('order_list', [
+            'title' => 'Danh sách đơn hàng',
+            'vendors' => $this->categoryService->getVendors(),
+            'orders' => $this->orderService->getCustomerOrders(),
+        ]);
+    }
+
+    public function order_detail($order_code) {
+        return view('order_detail', [
+            'title' => 'Chi tiết đơn hàng',
+            'vendors' => $this->categoryService->getVendors(),
+            'order' => $this->orderService->getByCode($order_code),
+            'products' => $this->itemInOrderService->get($order_code),
+        ]);
     }
 
     /**
@@ -61,7 +72,9 @@ class OrderController extends Controller
             if ($paymentType == "vnpay") {
                 // Step 1: Create a pending order without items
                 $orderData = $request->only(['customer_name', 'total_price', 'order_code', 'address', 'phone', 'email', 'province', 'district']);
-                $orderData['status'] = 'Đang giao'; // Set initial status to 'pending'
+                $orderData['deliveryStatus'] = 'Đang giao';
+                $orderData['paymentStatus'] = 'Chưa thanh toán';
+                 // Set initial status to 'pending'
                 $order = $this->orderService->create($request); // Create order in pending state
                 $this->itemInOrderService->create($request);
 
@@ -73,7 +86,8 @@ class OrderController extends Controller
                 return redirect(url('/'));
             } else if ($paymentType == "momo") {
                 $orderData = $request->only(['customer_name', 'total_price', 'order_code', 'address', 'phone', 'email', 'province', 'district']);
-                $orderData['status'] = 'Đang giao'; // Set initial status to 'pending'
+                $orderData['deliveryStatus'] = 'Đang giao'; // Set initial status to 'pending'
+                $orderData['paymentStatus'] = 'Chưa thanh toán';
                 $order = $this->orderService->create($request); // Create order in pending state
                 $this->itemInOrderService->create($request);
                 return $this->momo_atm_payment($request);
@@ -155,7 +169,7 @@ class OrderController extends Controller
         $order = $this->orderService->getByCode($orderCode);
         if ($order && $vnp_ResponseCode == '00' && $vnp_TransactionStatus == '00') {
             // Step 1: Update order status to 'paid'
-            $order->isPaid = true;
+            $order->paymentStatus = "Đã thanh toán";
             $order->save();
             Cart::where('customer_id', Auth::user()->id)->delete();
             return redirect(url('/'))->with('success', 'Payment successful!');
@@ -245,7 +259,7 @@ class OrderController extends Controller
             
             if ($order) {
                 // Update order status to 'paid'
-                $order->isPaid = true;
+                $order->paymentStatus = "Đã thanh toán";
                 $order->save();
 
                 return redirect(url('/'))->with('success', 'Payment successful!');
@@ -277,9 +291,13 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $order_code)
     {
-        //
+        $request->request->add(['deliveryStatus' => 'Đã giao']);
+        $order = $this->orderService->getByCode($order_code);
+        $order = $order->toArray();
+        $this->orderService->customerUpdate($request, $order);
+        return redirect()->route('orderlist');
     }
 
     /**

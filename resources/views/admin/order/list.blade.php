@@ -29,7 +29,8 @@
                                     <th>Tên khách hàng</th>
                                     <th>Ngày tạo</th>
                                     <th>Giá trị đơn hàng</th>
-                                    <th>Trạng thái</th>
+                                    <th>Trạng thái thanh toán</th>
+                                    <th>Trạng thái vận chuyển</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
@@ -41,7 +42,8 @@
                                     <td>{{ $order['customer_name'] }}</td>
                                     <td>{{ $order['created_at'] }}</td>
                                     <td>{{ $order['total_price'] }}</td>
-                                    <td>{{ $order['state'] }}</td>
+                                    <td>{{ $order['paymentStatus'] }}</td>
+                                    <td>{{ $order['deliveryStatus'] }}</td>
                                     <td class="flex gap-2">
                                         <a href="/admin/xem-don-hang/{{ $order['id'] }}" class="bg-violet-500 py-2 px-6 text-white"><i class="fa-regular fa-eye"></i></a>
                                         <a href="/admin/sua-don-hang/{{ $order['id'] }}" class="bg-green-500 py-2 px-6 text-white"><i class="fa-regular fa-pen-to-square"></i></a>
@@ -57,12 +59,13 @@
                                     <th>Tên khách hàng</th>
                                     <th>Ngày tạo</th>
                                     <th>Giá trị đơn hàng</th>
-                                    <th>Trạng thái</th>
+                                    <th>Trạng thái thanh toán</th>
+                                    <th>Trạng thái vận chuyển</th>
                                     <th id="actions_footer"></th>
                                 </tr>
                             </tfoot>
                         </table>
-                        <div class="text-lg">{{ $orders->links() }}</div>
+                        <div class="text-lg">{{ $orders->links('pagination::tailwind2') }}</div>
                     </div>
                 </div>
             </main>

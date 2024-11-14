@@ -119,6 +119,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
 
     <script>
+        // Có thể làm bảng so sánh các danh mục hoặc các hãng
         var chartOne = document.getElementById('chartOne');
         var myChart = new Chart(chartOne, {
             type: 'bar',
@@ -156,7 +157,7 @@
                 }
             }
         });
-
+        // có thể làm bảng so sánh thu nhập qua các tuần
         var chartTwo = document.getElementById('chartTwo');
         var myLineChart = new Chart(chartTwo, {
             type: 'line',

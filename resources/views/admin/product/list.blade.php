@@ -69,7 +69,7 @@
                                 </tr>
                             </tfoot>
                         </table>
-                        <div class="text-lg">{{ $products->links() }}</div>
+                        <div class="text-lg">{{ $products->links('pagination::tailwind2') }}</div>
                     </div>
                 </div>
             </main>

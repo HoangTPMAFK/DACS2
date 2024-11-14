@@ -156,8 +156,9 @@
                                 </div>
                             </div>
                             <div class="mt-48"><a href="index.html"
-                                    class="text-danger-600 text-sm font-[600] hover-text-decoration-underline">Forgot
-                                    your password?</a></div>
+                                    class="text-danger-600 text-sm font-[600] hover-text-decoration-underline">Quên mật khẩu</a></div>
+                            <div class="mt-48">Chưa có tài khoản, <a href="/dang-ky"
+                                    class="text-danger-600 text-sm font-[600] hover-text-decoration-underline">đăng ký ngay</a></div>
                         </div>
                     </div>
                 </div>

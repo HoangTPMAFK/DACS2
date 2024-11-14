@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Services\Cart\CartService;
 use App\Http\Services\Product\ProductService;
 use App\Http\Services\Voucher\VoucherService;
+use App\Http\Services\Category\CategoryService;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
@@ -13,11 +14,13 @@ class CartController extends Controller
     protected $cartService;
     protected $productService;
     protected $voucherService;
-    public function __construct(CartService $cartService, ProductService $productService, VoucherService $voucherService)
+    protected $categoryService;
+    public function __construct(CartService $cartService, ProductService $productService, VoucherService $voucherService, CategoryService $categoryService)
     {
         $this->cartService = $cartService;
         $this->productService = $productService;
         $this->voucherService = $voucherService;
+        $this->categoryService = $categoryService;
     }
     /**
      * Display a listing of the resource.
@@ -32,7 +35,8 @@ class CartController extends Controller
         return view('cart', [
             'title' => 'Giỏ hàng',
             'cart' => $this->cartService->get(),
-            'totalPrice' => $totalPrice
+            'totalPrice' => $totalPrice,
+            'vendors' => $this->categoryService->getVendors(),
         ]);
     }
 
@@ -81,7 +85,6 @@ class CartController extends Controller
     public function check_voucher(Request $request) {
         $voucher =  $this->voucherService->getByCode($request->input('voucher_code'));
         if ($voucher) {
-            
             $request->session()->put('voucher', $this->voucherService->getByCode($request->input('voucher_code')));
             Session::flash('voucher_success', 'Đã áp dụng mã giảm giá thành công');
             return redirect()->back();
@@ -89,7 +92,6 @@ class CartController extends Controller
             Session::flash('voucher_error', 'Mã giảm giá không tồn tại hoặc đã quá thời hạn hiệu lực');
             return redirect()->back();
         }
-            
     }
 
     /**

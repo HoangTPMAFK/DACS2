@@ -26,6 +26,7 @@
     </form>
     @include('search_bar')
     @include('categories_bar')
+    <!-- You found the first one, here is your flag: FLAG{YoU_FouNd_f1RSt_0nE} -->
     <div class="banner-two">
         <div class="container container-lg">
             <div class="banner-two-wrapper flex items-end">

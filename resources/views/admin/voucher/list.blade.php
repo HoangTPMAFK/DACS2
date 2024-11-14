@@ -60,7 +60,7 @@
                                 </tr>
                             </tfoot>
                         </table>
-                        <div class="text-lg">{{ $vouchers->links() }}</div>
+                        <div class="text-lg">{{ $vouchers->links('pagination::tailwind2') }}</div>
                     </div>
                 </div>
             </main>
