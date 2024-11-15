@@ -212,6 +212,10 @@
                                 class="text-gray-900 font-[600]">{{$order['province'].', '.$order['district'].', '.$order['address']}}</span>
                             </div>
                             <div class="mb-32 flex-between gap-8"><span
+                                class="text-gray-900 font-heading-two" style="min-width: 54px">Trạng thái thanh toán</span> <span
+                                class="text-gray-900 font-[600]">{{$order['paymentStatus']}}</span>
+                            </div>
+                            <div class="mb-32 flex-between gap-8"><span
                                 class="text-gray-900 font-heading-two">Ngày tạo</span> <span
                                 class="text-gray-900 font-[600]">{{$order['created_at']}}</span>
                             </div>

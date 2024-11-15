@@ -2,6 +2,7 @@
 <html lang="en" class="color-two font-exo">
 
 @include('head')
+
 <body>
     <div class="preloader fixed inset-0 z-[9999] flex justify-center items-center bg-white"><img
             src="images/preloader.gif" alt="Image"></div>
@@ -12,7 +13,7 @@
         <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
             <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
         </svg></div>
-    <form action="account.html#" class="search-box"><button type="button"
+    <form action="shop.html#" class="search-box"><button type="button"
             class="search-box__close absolute inset-block-start-0 right-0 m-16 w-48 h-48 border border-gray-100 rounded-[50%] flex items-center justify-center text-white hover-text-gray-800 hover-bg-white text-2xl transition-1"><i
                 class="ph ph-x"></i></button>
         <div class="container">
@@ -114,75 +115,63 @@
     <div class="breadcrumb mb-0 py-26 bg-main-two-50">
         <div class="container container-lg">
             <div class="breadcrumb-wrapper flex-between flex-wrap gap-16">
-                <h6 class="mb-0">My Account</h6>
+                <h6 class="mb-0">Shop</h6>
                 <ul class="flex items-center gap-8 flex-wrap">
                     <li class="text-sm"><a href="index.html"
                             class="text-gray-900 flex items-center gap-8 hover-text-main-600"><i
                                 class="ph ph-house"></i> Home</a></li>
                     <li class="flex items-center"><i class="ph ph-caret-right"></i></li>
-                    <li class="text-sm text-main-600">Account</li>
+                    <li class="text-sm text-main-600">Product Shop</li>
                 </ul>
             </div>
         </div>
     </div>
-    <section class="account py-80">
+    <section class="shop py-80">
         <div class="container container-lg">
-            <div class="w-full mt-6 gap-40 flex flex-col md:flex-row">
-                <div class="w-full md:w-1/3 px-2 py-4 flex items-center flex-col gap-4">
-                    <img src="<?php if (!is_null(Auth::user()->avatar)) echo 'http://127.0.0.1:8000/'.Auth::user()->avatar; ?>" class="max-w-72 w-11/12" alt="" id="avatar-image">
-                    <div class="flex flex-row gap-8">
-                        <button class="bg-orange-500 font-semibold text-white p-10">Đăng xuất</button>
-                        <button class="bg-red-500 font-semibold text-white p-10">Xóa tài khoản</button>
+            <div class="row">
+                <div class="xl:w-9/12 flex-grow-0 flex-shrink-0 basis-auto mx-auto">
+                    <div class="list-grid-wrapper list-view">
+                        @foreach ($products as $voucher_code => $productList)
+                        <div
+                            class="product-card h-full p-16 border border-gray-100 hover-border-main-600 rounded-16 relative transition-2">
+                            <div class="product-card__content mt-16">
+                                <h6 class="title text-lg font-[600] mt-12 mb-8"><a
+                                        class="link text-line-2" tabindex="0">Giảm {{ number_format($productList[1]['discountAmount']).' '.$productList[1]['unit'] }}</a></h6>
+                                <div class="mt-8">
+                                    <div class="progress w-full bg-color-three rounded-[50rem] h-4" role="progressbar"
+                                        aria-label="Basic example" aria-valuenow="35" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                        <div class="progress-bar bg-main-two-600 rounded-[50rem]" style="width:35%">
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-gray-900 text-xs font-[500] mt-8">Ngày bắt đầu: {{ $productList[1]['start_at'] }}</span>
+                                        <span class="text-gray-900 text-xs font-[500] mt-8">Ngày kết thúc: {{ $productList[1]['end_at'] }}</span>
+                                        @if ($productList[1]['allProduct'])
+                                        <span class="text-gray-900 text-xs font-[500] mt-8">Sản phẩm áp dụng: Mọi sản phẩm</span>
+                                        @else
+                                        <span class="text-gray-900 text-xs font-[500] mt-8">Sản phẩm áp dụng: {{ implode(', ', json_decode(json_encode(collect($productList[0])->pluck('product_name')))) }}</span>
+                                        @endif
+                                        @if ($productList[1]['maxDiscount'] != 0)
+                                            <span class="text-gray-900 text-xs font-[500] mt-8">Giảm tối đa: {{ number_format($productList[1]['maxDiscount']).' đ' }}</span>
+                                        @endif
+                                        
+                                    </div>
+                                </div>
+                                {{-- <div class="product-card__price my-20">
+                                    <span class="text-heading text-md font-[600]">123456789 đ</span>
+                                </div> --}}
+                                <input type="hidden" value="{{$productList[1]['voucher_code']}}">
+                                    <button type="button"
+                                    onclick="copyVoucherCode(this)"
+                                    class="product-card__cart btn bg-gray-50 text-heading hover-bg-main-600 hover-text-white py-11 px-24 rounded-8 flex items-center justify-center gap-8 font-[500] mt-20"
+                                    tabindex="0">Sao chép mã<i class="ph ph-copy"></i></button>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
+                    {{-- @if (array_key_exists('sort', $_GET)) --}}
                 </div>
-                <form action="/cap-nhat-tai-khoan/{{Auth::user()->id}}" method="POST" class="w-full md:w-2/3 px-2 py-4 justify-center">
-                    @csrf
-                    <div class="w-full my-12">
-                        <span class="text-lg">Họ</span>
-                        <input type="text" class="common-input" name="lname" id="" value="{{ Auth::user()->lname }}">
-                    </div>
-                    <div class="w-full my-12">
-                        <span class="text-lg">Tên</span>
-                        <input type="text" class="common-input" name="fname" id="" value="{{ Auth::user()->fname }}">
-                    </div>
-                    <div class="w-full my-12">
-                        <span class="text-lg">SĐT</span>
-                        <input type="text" class="common-input" name="phone" id="" value="{{ Auth::user()->phone }}" maxlength="10" minlength="10">
-                    </div>
-                    <div class="w-full my-12">
-                        <span class="text-lg">Email</span>
-                        <input type="email" class="common-input" name="email" id="" value="{{ Auth::user()->email }}">
-                    </div>
-                    <div class="w-full my-12">
-                        <span class="text-lg">Ngày sinh</span>
-                        <input type="date" class="common-input max-w-48" name="birthday" id="" value="<?php if (Auth::user()->birthday != '0000-00-00') echo Auth::user()->birthday; ?>">
-                    </div>
-                    <div class="w-full my-12">
-                        <span class="text-lg">CMND/CCCD</span>
-                        <input class="common-input" type="text" name="personal_id" id="" value="@if (!is_null(Auth::user()->personal_id)) {{ Auth::user()->personal_id }} @endif">
-                    </div>
-                    <div class="w-full my-12">
-                        <span class="text-lg">Giới tính</span>
-                        <select name="gender" id="" class="common-input max-w-32">
-                            <option value="1" @if (Auth::user()->gender == 1) {{ "selected" }} @endif>Nam</option>
-                            <option value="2" @if (Auth::user()->gender == 2) {{ "selected" }} @endif>Nữ</option>
-                            <option value="3" @if (Auth::user()->gender == 3) {{ "selected" }} @endif>Khác</option>
-                        </select>
-                    </div>
-                    <div class="w-full my-12">
-                        <span class="text-lg">Thay đổi avatar</span>
-                        <input type="hidden" name="oldAvatarPath" value="@if (!is_null(Auth::user()->avatar)) {{ Auth::user()->avatar }} @endif">
-                        <img class="w-1/5 max-w-50" id="new-avatar-image">
-                        <input class="py-8 max-w-56" type="file" name="avatar" id="" accept="image/*" onchange="uploadMyAccountAvatar(this)">
-                    </div>
-                    <div class="w-full my-12">
-                        <span class="text-lg">Đia chỉ</span>
-                        <input type="text" class="common-input" name="address" id="" value="{{ Auth::user()->address }}">
-                    </div>
-                    <div class="w-full my-12">
-                        <button class="bg-orange-600 p-10 text-lg text-white mr-2 rounded-lg shadow-lg">Cập nhật tài khoản</button>
-                    </div>
-                </form>
             </div>
         </div>
     </section>
@@ -383,6 +372,45 @@
             </div>
         </div>
     </div>
+    <script>
+        // Function to update a specific query parameter without affecting others
+        function updateURLParameter(paramName, paramValue) {
+            const url = new URL(window.location.href);
+            url.searchParams.set(paramName, paramValue); // Set or update the parameter
+            window.open(url.toString(), "_self"); // Redirect to the updated URL in the same tab
+        }
+
+        // Attach event listeners to color radio buttons
+        document.querySelectorAll('input[name="color"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const selectedColor = radio.value;
+                updateURLParameter('color', selectedColor);
+            });
+        });
+
+        // Attach event listeners to ram radio buttons
+        document.querySelectorAll('input[name="ram"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const selectedRam = radio.value;
+                updateURLParameter('ram', selectedRam);
+            });
+        });
+
+        // Attach event listeners to capacity radio buttons
+        document.querySelectorAll('input[name="capacity"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const selectedCapacity = radio.value;
+                updateURLParameter('capacity', selectedCapacity);
+            });
+        });
+        // Attach event listeners to price level radio buttons
+        document.querySelectorAll('input[name="price_level"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const selectedPrice = radio.value;
+                updateURLParameter('price_level', selectedPrice);
+            });
+        });
+    </script>
 </body>
 
 </html>

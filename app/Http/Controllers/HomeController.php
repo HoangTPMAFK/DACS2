@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Services\Category\CategoryService;
 use App\Http\Services\Product\ProductService;
 use App\Http\Services\Comment\CommentService;
+use App\Http\Services\Voucher\VoucherService;
 use App\Models\Category;
 
 class HomeController extends Controller
@@ -13,16 +14,18 @@ class HomeController extends Controller
     protected $categoryService;
     protected $productService;
     protected $commentService;
+    protected $voucherService;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(CategoryService $categoryService, ProductService $productService, CommentService $commentService)
+    public function __construct(CategoryService $categoryService, ProductService $productService, CommentService $commentService, VoucherService $voucherService)
     {
         $this->categoryService = $categoryService;
         $this->productService = $productService;
         $this->commentService = $commentService;
+        $this->voucherService = $voucherService;
     }
 
     /**
@@ -73,6 +76,21 @@ class HomeController extends Controller
     public function myaccount() {
         return view('my_account', [
             'title' => 'Tài khoản của tôi',
+            'vendors' => $this->categoryService->getVendors(),
+        ]);
+    }
+    public function voucherlist() {
+        return view('voucher_list', [
+            'title' => 'Danh sách mã giảm giá',
+            'vendors' => $this->categoryService->getVendors(),
+            'products' => $this->voucherService->getProducts(),
+        ]);
+    }
+    public function voucher($voucherCode) {
+        $voucher = $this->voucherService->getByCode($voucherCode);
+        return view('voucher', [
+            'title' => 'Mã giảm giá',
+            'voucher' => $voucher,
             'vendors' => $this->categoryService->getVendors(),
         ]);
     }

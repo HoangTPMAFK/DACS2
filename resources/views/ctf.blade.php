@@ -2,6 +2,7 @@
 <html lang="en" class="color-two font-exo">
 
 @include('head')
+
 <body>
     <div class="preloader fixed inset-0 z-[9999] flex justify-center items-center bg-white"><img
             src="images/preloader.gif" alt="Image"></div>
@@ -127,63 +128,27 @@
     </div>
     <section class="account py-80">
         <div class="container container-lg">
-            <div class="w-full mt-6 gap-40 flex flex-col md:flex-row">
-                <div class="w-full md:w-1/3 px-2 py-4 flex items-center flex-col gap-4">
-                    <img src="<?php if (!is_null(Auth::user()->avatar)) echo 'http://127.0.0.1:8000/'.Auth::user()->avatar; ?>" class="max-w-72 w-11/12" alt="" id="avatar-image">
-                    <div class="flex flex-row gap-8">
-                        <button class="bg-orange-500 font-semibold text-white p-10">Đăng xuất</button>
-                        <button class="bg-red-500 font-semibold text-white p-10">Xóa tài khoản</button>
+            <form action="/ctf{{$n}}" method="post">
+                @csrf
+                <div class="row g-4 flex justify-center">
+                    <div class="2xl:w-6/12 flex-grow-0 flex-shrink-0 basis-auto pe-xl-5">
+                        @include('error')
+                        <div
+                            class="border border-gray-100 hover-border-main-600 transition-1 rounded-16 px-24 py-40 h-full">
+                            <h6 class="text-xl mb-32">Thử thách số {{ $n }}</h6>
+                            <div class="mb-24"><label for="username"
+                                    class="text-neutral-900 text-lg mb-8 font-[500]">{{ $description }}<span
+                                        class="text-danger">*</span></label> <input class="common-input" name="flag" id="username"
+                                    placeholder="FLAG{this_is_the_flag}"></div>
+                            <div class="mb-24 mt-48">
+                                <div class="flex items-center gap-48 flex-wrap"><button type="submit"
+                                        class="btn btn-main py-18 px-40">Submit</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <form action="/cap-nhat-tai-khoan/{{Auth::user()->id}}" method="POST" class="w-full md:w-2/3 px-2 py-4 justify-center">
-                    @csrf
-                    <div class="w-full my-12">
-                        <span class="text-lg">Họ</span>
-                        <input type="text" class="common-input" name="lname" id="" value="{{ Auth::user()->lname }}">
-                    </div>
-                    <div class="w-full my-12">
-                        <span class="text-lg">Tên</span>
-                        <input type="text" class="common-input" name="fname" id="" value="{{ Auth::user()->fname }}">
-                    </div>
-                    <div class="w-full my-12">
-                        <span class="text-lg">SĐT</span>
-                        <input type="text" class="common-input" name="phone" id="" value="{{ Auth::user()->phone }}" maxlength="10" minlength="10">
-                    </div>
-                    <div class="w-full my-12">
-                        <span class="text-lg">Email</span>
-                        <input type="email" class="common-input" name="email" id="" value="{{ Auth::user()->email }}">
-                    </div>
-                    <div class="w-full my-12">
-                        <span class="text-lg">Ngày sinh</span>
-                        <input type="date" class="common-input max-w-48" name="birthday" id="" value="<?php if (Auth::user()->birthday != '0000-00-00') echo Auth::user()->birthday; ?>">
-                    </div>
-                    <div class="w-full my-12">
-                        <span class="text-lg">CMND/CCCD</span>
-                        <input class="common-input" type="text" name="personal_id" id="" value="@if (!is_null(Auth::user()->personal_id)) {{ Auth::user()->personal_id }} @endif">
-                    </div>
-                    <div class="w-full my-12">
-                        <span class="text-lg">Giới tính</span>
-                        <select name="gender" id="" class="common-input max-w-32">
-                            <option value="1" @if (Auth::user()->gender == 1) {{ "selected" }} @endif>Nam</option>
-                            <option value="2" @if (Auth::user()->gender == 2) {{ "selected" }} @endif>Nữ</option>
-                            <option value="3" @if (Auth::user()->gender == 3) {{ "selected" }} @endif>Khác</option>
-                        </select>
-                    </div>
-                    <div class="w-full my-12">
-                        <span class="text-lg">Thay đổi avatar</span>
-                        <input type="hidden" name="oldAvatarPath" value="@if (!is_null(Auth::user()->avatar)) {{ Auth::user()->avatar }} @endif">
-                        <img class="w-1/5 max-w-50" id="new-avatar-image">
-                        <input class="py-8 max-w-56" type="file" name="avatar" id="" accept="image/*" onchange="uploadMyAccountAvatar(this)">
-                    </div>
-                    <div class="w-full my-12">
-                        <span class="text-lg">Đia chỉ</span>
-                        <input type="text" class="common-input" name="address" id="" value="{{ Auth::user()->address }}">
-                    </div>
-                    <div class="w-full my-12">
-                        <button class="bg-orange-600 p-10 text-lg text-white mr-2 rounded-lg shadow-lg">Cập nhật tài khoản</button>
-                    </div>
-                </form>
-            </div>
+            </form>
         </div>
     </section>
     <section class="shipping mb-24" id="shipping">

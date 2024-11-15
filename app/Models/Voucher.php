@@ -16,6 +16,7 @@ class Voucher extends Model
         'productsList', 
         'discountAmount', 
         'unit', 
-        'maxDiscount'
+        'maxDiscount',
+        'hidden',
     ];
 }

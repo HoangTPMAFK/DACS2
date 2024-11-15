@@ -25,6 +25,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CTF;
 
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -36,6 +37,7 @@ Route::get('/dang-nhap', [LoginController::class, 'login'])->name('login');
 Route::post('/dang-nhap', [LoginController::class, 'postLogin']);
 Route::get('/dang-ky', [LoginController::class, 'signup']);
 Route::post('/dang-ky', [LoginController::class, 'postSignup']);
+Route::get('/ma-giam-gia', [HomeController::class, 'voucherlist']);
 Route::prefix('/')->middleware(CustomerAuthenticate::class)->group(function () {
     Route::post('/gui-binh-luan/{product}', [CommentController::class, 'store']);
     Route::post('/cap-nhat-tai-khoan/{user}', [UserController::class, 'update']);
@@ -51,6 +53,19 @@ Route::prefix('/')->middleware(CustomerAuthenticate::class)->group(function () {
     Route::get('/quan-ly-don-hang', [OrderController::class, 'orderlist'])->name('orderlist');
     Route::get('/quan-ly-don-hang/{order_code}', [OrderController::class, 'order_detail']);
     Route::post('/cap-nhat-don-hang/{order_code}', [OrderController::class, 'update']);
+    Route::prefix('/')->group(function () {
+        Route::get('/ctf1', [CTF::class, 'ctf1'])->name('ctf1');
+        Route::post('/ctf1', [CTF::class, 'postctf1']);
+        Route::get('/ctf2', [CTF::class, 'ctf2'])->name('ctf2');
+        Route::post('/ctf2', [CTF::class, 'postctf2']);
+        Route::get('/ctf3', [CTF::class, 'ctf3'])->name('ctf3');
+        Route::post('/ctf3', [CTF::class, 'postctf3']);
+        Route::get('/ctf4', [CTF::class, 'ctf4'])->name('ctf4');
+        Route::post('/ctf4', [CTF::class, 'postctf4']);
+        Route::get('/ctf5', [CTF::class, 'ctf5'])->name('ctf5');
+        Route::post('/ctf5', [CTF::class, 'postctf5']);
+        Route::get('/ctf/completed', [CTF::class, 'completed'])->name('ctf.completed');
+    });
 });
 Route::post('/gio-hang/kiem-tra-ma-giam-gia', [CartController::class, 'check_voucher']);
 Route::get('/admin/dang-nhap', [AdminLoginController::class, 'login'])->name('admin.login');

@@ -255,8 +255,6 @@ class OrderController extends Controller
         $order = $this->orderService->getByCode($orderCode);
         if ($generatedSignature === $receivedSignature && $request->input('resultCode') == '0') { // '0' indicates success in MoMo's API
             // Payment is successful
-            
-            
             if ($order) {
                 // Update order status to 'paid'
                 $order->paymentStatus = "Đã thanh toán";

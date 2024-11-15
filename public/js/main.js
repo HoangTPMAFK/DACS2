@@ -110,7 +110,7 @@ function submitComment(product_id) {
     const rating = document.querySelector('input[name="rating"]:checked');
     const content = document.querySelector('textarea[name="content"]');
     console.log([title.value, rating.value, content.value]);
-    if (rating == null && rating.value == "") {
+    if (rating != null && rating.value != "") {
         $.ajax({
             type: "POST",
             dataType: "JSON",
@@ -237,4 +237,11 @@ function searchProduct(searchBar) {
     } else {
         dropdown.classList.add("hidden");
     }
+}
+
+function copyVoucherCode(copyBtn) {
+    console.log(copyBtn.previousElementSibling);
+    const voucherCode = copyBtn.previousElementSibling;
+    navigator.clipboard.writeText(voucherCode.value);
+    alert('Đã sao chép mã giảm giá');
 }

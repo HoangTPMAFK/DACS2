@@ -40,27 +40,34 @@
                     <div class="w-full mb-4">
                         <div class="text-xl rounded-t-lg text-white bg-black p-2 font-semibold">Thông tin chi tiết</div>
                         <div class="bg-white rounded-b-lg shadow-lg border-b border-slate-300">
-                            <div class="flex flex-col md:flex-row flex-wrap justify-around p-4 bg-white rounded-lg shadow-lg text-lg mb-4">
-                                <div class="md:w-1/2 mb-4">
+                            <div class=" columns-2 p-4 bg-white rounded-lg shadow-lg text-lg mb-4">
+                                <div class="mb-4">
                                     <input type="checkbox" name="allProduct" id="allProduct"  onchange="toggleProductList()">
                                     <label for="allProduct">Áp dụng cho mọi sản phẩm</label>
                                 </div>
-                                <div class="md:w-1/2 mb-4">
-                                    <span>Lượng giảm</span>
-                                    <input class="p-2 border border-slate-300" type="number" name="discountAmount" id="discountAmount">
-                                </div>
-                                <div class="md:w-1/2 mb-4">
+                                
+                                <div class="mb-4">
                                     <span>Đơn vị</span>
                                     <select name="unit" id="unit" class="p-2 border border-slate-300">
                                         <option value="%">%</option>
                                         <option value="VND">VND</option>
                                     </select>
                                 </div>
-                                <div class="md:w-1/2 mb-4">
+                                <div class="mb-4">
+                                    <span>Ẩn khỏi khách hàng</span>
+                                    <input type="checkbox" name="hidden" id="hidden">
+                                </div>
+                                <div class="mb-4">
+                                    <span>Lượng giảm</span>
+                                    <input class="p-2 border border-slate-300" type="number" name="discountAmount" id="discountAmount">
+                                </div>
+                                <div class="mb-4">
                                     <span>Lượng giảm tối đa</span>
                                     <input class="p-2 border border-slate-300" type="number" name="maxDiscount" id="maxDiscount">
                                 </div>
-                                <div class="shrink-0 mb-4">
+                            </div>
+                            <div class="flex flex-col w-full">
+                                <div class="shrink-0 mb-4 w-full mx-auto">
                                     <span>Tìm sản phẩm </span>
                                     <div class="group w-full md:w-[500px]">
                                         <input class="p-2 border border-slate-300 w-full" type="text" name="" id="product_search" oninput="searchProduct(this)" placeholder="Tìm kiếm sản phẩm">
