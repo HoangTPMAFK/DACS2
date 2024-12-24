@@ -9,7 +9,7 @@ class SearchService {
         
     }
     public function get(Request $request) {
-        return Product::whereLike('product_name','%'.$request->input('product_name').'%',false)->get();
+        return Product::whereLike('product_name','%'.$request->input('product_name').'%',false)->paginate(8);
     }
     public function store($request) {
                 

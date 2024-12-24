@@ -13,10 +13,10 @@
             <i class="fas fa-tachometer-alt mr-3"></i>
             Dashboard
         </a>
-        <a href="blank.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+        {{-- <a href="blank.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
             <i class="fas fa-sticky-note mr-3"></i>
             Blank Page
-        </a>
+        </a> --}}
         <a href="/admin/quan-ly-san-pham" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-4 nav-item">
             <i class="fas fa-table mr-3"></i>
             Quản lý sản phẩm
@@ -51,11 +51,11 @@
         </a>
         <a href="/admin/my-account" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
             <i class="fas fa-user mr-3"></i>
-            My Account
+            Tài khoản của tôi
         </a>
         <a href="/admin/logout" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
             <i class="fas fa-sign-out-alt mr-3"></i>
-            Sign Out
+            Đăng xuất
         </a>
         <button class="w-full bg-white cta-btn font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
             <i class="fas fa-arrow-circle-up mr-3"></i> Upgrade to Pro!

@@ -51,9 +51,14 @@ class VoucherController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Voucher $voucher)
     {
-        //
+        $products = $this->productService->getProductListById(json_decode($voucher['productsList']));
+        return view('admin/voucher/show', [
+            'title' => 'Sửa mã giảm giá',
+            'voucher' => $voucher->attributesToArray(),
+            'products' => $products,
+        ]);
     }
 
     /**

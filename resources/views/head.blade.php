@@ -11,5 +11,6 @@
     @vite('resources/css/app.css')
     <link href="/css/app.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- <base href="http://192.168.0.94:8000"> --}}
     <base href="http://127.0.0.1:8000">
 </head>

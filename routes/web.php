@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\VendorController as AdminVendorController;
 use App\Http\Controllers\Admin\AgencyController as AdminAgencyController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\InventoryController as AdminInventoryController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
@@ -24,7 +25,6 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CTF;
 
 Auth::routes();
@@ -32,6 +32,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/danh-muc/{category}', [HomeController::class, 'category']);
 Route::get('/danh-muc/{category}/{vendor}', [HomeController::class, 'category']);
 Route::get('/san-pham/{product}', [HomeController::class, 'product']);
+Route::get('/tim-kiem', [HomeController::class, 'search']);
 
 Route::get('/dang-nhap', [LoginController::class, 'login'])->name('login');
 Route::post('/dang-nhap', [LoginController::class, 'postLogin']);
@@ -71,11 +72,7 @@ Route::post('/gio-hang/kiem-tra-ma-giam-gia', [CartController::class, 'check_vou
 Route::get('/admin/dang-nhap', [AdminLoginController::class, 'login'])->name('admin.login');
 Route::post('/admin/dang-nhap', [AdminLoginController::class, 'postLogin']);
 Route::prefix('admin')->middleware(AdminAuthenticate::class)->group(function () {
-    Route::get('dashboard', function () {
-        return view('admin/dashboard', [
-            'title' => 'Bảng điều khiển'
-        ]);
-    })->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('quan-ly-san-pham', [AdminProductController::class, 'index']);
     Route::get('them-san-pham', [AdminProductController::class, 'create']);
@@ -83,6 +80,7 @@ Route::prefix('admin')->middleware(AdminAuthenticate::class)->group(function () 
     Route::delete('xoa-san-pham', [AdminProductController::class, 'destroy']);
     Route::get('sua-san-pham/{product}', [AdminProductController::class, 'edit']);
     Route::post('sua-san-pham/{product}', [AdminProductController::class, 'update']);
+    Route::get('xem-san-pham/{product}', [AdminProductController::class, 'show']);
     
     Route::get('quan-ly-danh-muc', [AdminCategoryController::class, 'index']);
     Route::get('them-danh-muc', [AdminCategoryController::class, 'create']);
@@ -90,6 +88,7 @@ Route::prefix('admin')->middleware(AdminAuthenticate::class)->group(function () 
     Route::delete('xoa-danh-muc', [AdminCategoryController::class, 'destroy']);
     Route::get('sua-danh-muc/{category}', [AdminCategoryController::class, 'edit']);
     Route::post('sua-danh-muc/{category}', [AdminCategoryController::class, 'update']);
+    Route::get('xem-danh-muc/{category}', [AdminCategoryController::class, 'show']);
 
     Route::get('quan-ly-hang', [AdminVendorController::class, 'index']);
     Route::get('them-hang', [AdminVendorController::class, 'create']);
@@ -115,11 +114,13 @@ Route::prefix('admin')->middleware(AdminAuthenticate::class)->group(function () 
     Route::delete('xoa-khoi-kho', [AdminInventoryController::class, 'destroy']);
     Route::get('cap-nhat-kho/{product}', [AdminInventoryController::class, 'edit']);
     Route::post('cap-nhat-kho/{product}', [AdminInventoryController::class, 'update']);
+    Route::get('xem-trong-kho/{product}', [AdminInventoryController::class, 'show']);
 
     Route::get('quan-ly-don-hang', [AdminOrderController::class, 'index']);
     Route::delete('xoa-don-hang', [AdminOrderController::class, 'destroy']);
     Route::get('sua-don-hang/{order}', [AdminOrderController::class, 'edit']);
     Route::post('sua-don-hang/{order}', [AdminOrderController::class, 'update']);
+    Route::get('xem-don-hang/{order}', [AdminOrderController::class, 'show']);
 
     Route::get('quan-ly-tai-khoan', [AdminUserController::class, 'index']);
     Route::get('them-tai-khoan', [AdminUserController::class, 'create']);
@@ -127,6 +128,7 @@ Route::prefix('admin')->middleware(AdminAuthenticate::class)->group(function () 
     Route::delete('xoa-tai-khoan', [AdminUserController::class, 'destroy']);
     Route::get('sua-tai-khoan/{user}', [AdminUserController::class, 'edit']);
     Route::post('sua-tai-khoan/{user}', [AdminUserController::class, 'update']);
+    Route::get('xem-tai-khoan/{user}', [AdminUserController::class, 'show']);
 
     Route::get('quan-ly-ma-giam-gia', [AdminVoucherController::class, 'index']);
     Route::get('them-ma-giam-gia', [AdminVoucherController::class, 'create']);
@@ -134,6 +136,7 @@ Route::prefix('admin')->middleware(AdminAuthenticate::class)->group(function () 
     Route::delete('xoa-ma-giam-gia', [AdminVoucherController::class, 'destroy']);
     Route::get('sua-ma-giam-gia/{voucher}', [AdminVoucherController::class, 'edit']);
     Route::post('sua-ma-giam-gia/{voucher}', [AdminVoucherController::class, 'update']);
+    Route::get('xem-ma-giam-gia/{voucher}', [AdminVoucherController::class, 'show']);
 
     Route::post('/upload/services/{type}', [ImageUploadController::class, 'store']);
 

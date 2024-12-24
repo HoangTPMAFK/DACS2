@@ -3,6 +3,9 @@ namespace App\Http\Services;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\File;
+use Illuminate\Http\Request;
 
 class ImageUploadService {
     public function create($request) {
@@ -12,7 +15,19 @@ class ImageUploadService {
         
         
     }
-    public function store($request, $type) {
+    public function store(Request $request, $type) {
+        $validator = Validator::make($request->all(), [
+            'file' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:5120'],
+        ]);
+        if ($validator->fails()) {
+            return false;
+        }
+        $fileName = $request->file('file')->getClientOriginalName();
+        if (preg_match('/^[a-zA-Z0-9_\-\.]+$/', $fileName)) {
+            $sanitizedFileName = $fileName;
+        } else {
+            return false;
+        }
         if ($type == "thumbnail") {
             try {
                 if ($request->hasFile('file')) {

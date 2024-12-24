@@ -18,7 +18,12 @@ class ProductService {
                 $thumbnailPath = 'storage/images/products/'.$slug_vi.'/'.$request->input('thumbnail');
             }
             if ($request->input('description') != "") {
-                $description = base64_encode($request->input('description'));
+                $description = $request->input('description');
+                if (!strpos($description, '<script')) {
+                    Session::flash('error', 'Đã phát hiện mã độc trong mô tả sản phẩm');
+                    return true;
+                }
+                $description = base64_encode($description);
             }
             if ($request->hasFile('images')) {
                 $imgPaths = [];
@@ -126,9 +131,20 @@ class ProductService {
             return Product::where($array)->paginate(18);
         }
     }
-    
+    public function getLatestProducts() {
+        return Product::orderBy('created_at', 'DESC')->limit(8)->get();
+    }
+    public function getMostSoldProducts() {
+        return Product::orderBy('total_sold', 'DESC')->limit(8)->get();
+    }
+    public function getHighestRatedProducts() {
+        return Product::select('*')->orderByRaw('rating / rating_times DESC')->limit(8)->get();
+    }
     public function getProductListById(array $array) {
         return Product::whereIn('id', $array)->get();
+    }
+    public function searchProduct($keyword) {
+        return Product::where('product_name', 'LIKE', '%'.$keyword.'%')->paginate(8);
     }
 
     public function update($request, $product) {
@@ -155,7 +171,12 @@ class ProductService {
                 $product->images = $imgPaths;
             }
             if ($request->input('description') != "") {
-                $product->description = base64_encode($request->input('description'));
+                $description = $request->input('description');
+                if (strpos($description, '<script')) {
+                    Session::flash('error', 'Đã phát hiện mã độc trong mô tả sản phẩm');
+                    return true;
+                }
+                $product->description = base64_encode($description);
             }
             $product->save();
             Session::flash('success', 'Cập nhật sản phẩm thành công');

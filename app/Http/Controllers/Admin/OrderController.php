@@ -4,15 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
 use App\Http\Services\Order\OrderService;
+use App\Http\Services\Order\ItemInOrderService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
     protected $orderService;
-    public function __construct(OrderService $orderService)
+    protected $itemInOrderService;
+    public function __construct(OrderService $orderService, ItemInOrderService $itemInOrderService)
     {
         $this->orderService = $orderService;
+        $this->itemInOrderService = $itemInOrderService;
     }
     /**
      * Display a listing of the resource.
@@ -46,7 +49,11 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('admin/order/show', [
+            'title' => 'Xem đơn hàng',
+            'order' => $order->attributesToArray(),
+            'products' => $this->itemInOrderService->get($order['order_code']),
+        ]);
     }
 
     /**
@@ -56,7 +63,7 @@ class OrderController extends Controller
     {
         return view('admin/order/edit', [
             'title' => 'Cập nhật đơn hàng',
-            'order' => $order->attributesToArray()
+            'order' => $order->attributesToArray(),
         ]);
     }
 

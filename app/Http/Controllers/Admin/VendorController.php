@@ -84,7 +84,7 @@ class VendorController extends Controller
                 ]);
             }
         } else if ($vendor['id'] != NULL) {
-            return view('admin/vendor/edit', [
+            return view('admin/vendor/show', [
                 'title' => 'Sửa hãng',
                 'vendor' => $vendor->attributesToArray(),
                 'categories' => $this->categoryService->get()

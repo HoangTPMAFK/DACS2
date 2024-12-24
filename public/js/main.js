@@ -47,7 +47,11 @@ function getQuantity() {
 
 function addToCart(product_id) {
     const agency = document.querySelector("#agency");
-    if (agency.value != "")
+    const stockLabel = document.querySelector("#stock");
+    if (stockLabel.innerHTML == `<div class="text-red-500">Hết hàng</div>`
+         || stockLabel.innerHTML == `<div class="text-red-500">Chưa có hàng</div>`) {
+        alert('Sản phẩm đã hết hàng hoặc chưa có hàng tại chi nhánh này');
+    } else if (agency.value != "")
         $.ajax({
             type: "POST",
             dataType: "JSON",
@@ -59,6 +63,9 @@ function addToCart(product_id) {
             url: "/them-vao-gio",
             success: function (result) {
                 alert(result.msg);
+            },
+            error: function(xhr, status, error) {
+                window.location.href = "/dang-nhap";
             }
         })
     else {
@@ -81,9 +88,10 @@ function uploadMyAccountAvatar(imgInput) {
         success: function(result) {
             if (!result.error) {
                 alert('Tải ảnh lên thành công');
-                $('#new-avatar-image').attr('src', `http://127.0.0.1:8000/${result.msg}`);
+                $('#new-avatar-image').attr('src', `/${result.msg}`);
             } else {
                 alert("Đã xảy ra lỗi, vui lòng thử lại")
+                imgInput.value = null;
             }
         }
     })

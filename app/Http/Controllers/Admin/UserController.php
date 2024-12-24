@@ -59,9 +59,12 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        //
+        return view('admin/user/show', [
+            'title' => 'Xem tài khoản',
+            'user' => $user->attributesToArray()
+        ]);
     }
 
     /**
@@ -70,7 +73,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         return view('admin/user/edit', [
-            'title' => 'Quản lý tài khoản',
+            'title' => 'Sửa tài khoản',
             'user' => $user->attributesToArray()
         ]);
     }

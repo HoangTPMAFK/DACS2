@@ -5,12 +5,12 @@
                 <a href="/" class="link"><img src="images/logo-two.png" alt="Logo"></a>
             </div>
             <div class="flex items-center md:gap-[16px] max-sm:gap-0">
-                <form action="index-two.html#" class="flex items-center flex-wrap form-location-wrapper relative">
+                <form action="/tim-kiem" class="flex items-center flex-wrap form-location-wrapper relative">
                     <div class="search-category style-two h-48 search-form md:flex hidden">
                         <div class="search-form__wrapper relative">
                             <input
                                 class="search-form__input common-input py-13 ps-16 pe-18 rounded-none border-0"
-                                placeholder="Tìm kiếm sản phẩm" oninput="searchProduct(this)">
+                                placeholder="Tìm kiếm sản phẩm" oninput="searchProduct(this)" name="product_name">
                         </div>
                         <button type="submit"
                             class="bg-main-two-600 items-center justify-center text-xl text-white flex-shrink-0 w-48 hover-bg-main-two-700 xl:flex hidden">

@@ -22,23 +22,19 @@
                     <div class="w-full mb-4">
                         <div class="text-xl rounded-t-lg text-white bg-black p-2 font-semibold">Thông tin chung</div>
                         <div class="flex flex-col md:flex-row justify-around p-4 bg-white rounded-lg shadow-lg text-lg">
+                            <input type="hidden" name="id">
                             <div>
                                 <span>Tên danh mục</span>
-                                <input class="p-2 border border-slate-300" type="text" name="category_name" id="">
+                                <input class="p-2 border border-slate-300" type="text" name="category_name" id="" value="{{ $category['category_name'] }}" readonly>
                             </div>
                             <div>
                                 <span>slug</span>
-                                <input class="p-2 border border-slate-300" type="text" name="slug" id="">
+                                <input class="p-2 border border-slate-300" type="text" name="slug" id="" value="{{ $category['slug'] }}" readonly>
                             </div>
                             <div>
                                 <span>slug_vi</span>
-                                <input class="p-2 border border-slate-300" type="text" name="slug_vi" id="">
+                                <input class="p-2 border border-slate-300" type="text" name="slug_vi" id="" value="{{ $category['slug_vi'] }}" readonly>
                             </div>
-                        </div>
-                    </div>
-                    <div class="w-full mb-4">
-                        <div class="mb-2 mx-2 flex justify-end">
-                            <button type="submit" class="bg-blue-600 p-2 text-lg text-white rounded-lg shadow-lg">Thêm danh mục</button>
                         </div>
                     </div>
                 </form>

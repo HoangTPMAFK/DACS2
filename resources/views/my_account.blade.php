@@ -129,7 +129,7 @@
         <div class="container container-lg">
             <div class="w-full mt-6 gap-40 flex flex-col md:flex-row">
                 <div class="w-full md:w-1/3 px-2 py-4 flex items-center flex-col gap-4">
-                    <img src="<?php if (!is_null(Auth::user()->avatar)) echo 'http://127.0.0.1:8000/'.Auth::user()->avatar; ?>" class="max-w-72 w-11/12" alt="" id="avatar-image">
+                    <img src="<?php if (!is_null(Auth::user()->avatar)) echo '/'.Auth::user()->avatar; ?>" class="max-w-72 w-11/12" alt="" id="avatar-image">
                     <div class="flex flex-row gap-8">
                         <button class="bg-orange-500 font-semibold text-white p-10">Đăng xuất</button>
                         <button class="bg-red-500 font-semibold text-white p-10">Xóa tài khoản</button>

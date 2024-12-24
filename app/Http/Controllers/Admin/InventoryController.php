@@ -65,9 +65,16 @@ class InventoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Inventory $product)
     {
-        //
+        $product = $product->attributesToArray();
+        return view('admin/inventory/show', [
+            'title' => 'Cập nhật kho hàng',
+            'product' => $product,
+            'product_info' => $this->productService->get($product['product_id']),
+            'categories' => $this->categoryService->get(),
+            'agency' => $this->agencyService->get('id', $product['agency_id'])[0]
+        ]);
     }
 
     /**

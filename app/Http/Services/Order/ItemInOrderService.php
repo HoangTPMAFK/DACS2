@@ -14,6 +14,7 @@ class ItemInOrderService {
                     'product_id' => (int) $request->input('product_id')[$i],
                     'agency_id' => (int) $request->input('agency_id')[$i],
                     'quantity' => (int) $request->input('quantity')[$i],
+                    'price' => (int) $request->input('price')[$i],
                 ]);
             }
             return true;

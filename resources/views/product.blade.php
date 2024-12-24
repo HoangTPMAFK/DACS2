@@ -186,18 +186,16 @@
                                 </h5>
                                 <div class="flex items-center flex-wrap gap-12">
                                     <div class="flex items-center gap-12 flex-wrap">
-                                        <div class="flex items-center gap-8"><span
-                                                class="text-15 font-[500] text-warning-600 flex"><i
-                                                    class="ph-fill ph-star"></i></span> <span
-                                                class="text-15 font-[500] text-warning-600 flex"><i
-                                                    class="ph-fill ph-star"></i></span> <span
-                                                class="text-15 font-[500] text-warning-600 flex"><i
-                                                    class="ph-fill ph-star"></i></span> <span
-                                                class="text-15 font-[500] text-warning-600 flex"><i
-                                                    class="ph-fill ph-star"></i></span> <span
-                                                class="text-15 font-[500] text-warning-600 flex"><i
-                                                    class="ph-fill ph-star"></i></span></div><span
-                                            class="text-sm font-[500] text-neutral-600">4.7 Star Rating</span> <span
+                                        <div class="flex items-center gap-8">
+                                            @php
+                                            if ($product['rating_times'] != 0) {
+                                                for ($i = 1; $i <= round($product['rating']/$product['rating_times']); $i++) {
+                                                    echo '<span class="text-15 font-[500] text-warning-600 flex"><i class="ph-fill ph-star"></i></span>';
+                                                }
+                                            }
+                                            @endphp
+                                            </div><span
+                                            class="text-sm font-[500] text-neutral-600">@if ($product['rating_times'] == 0) {{0}} @else {{number_format($product['rating']/$product['rating_times'], 1)}} @endif sao</span> <span
                                             class="text-sm font-[500] text-gray-500">(21,671)</span>
                                     </div>
                                 </div>
@@ -519,21 +517,19 @@
                                             <div class="flex flex-wrap gap-44">
                                                 <div
                                                     class="border border-gray-100 rounded-8 px-40 py-52 flex items-center justify-center flex-col flex-shrink-0 text-center">
-                                                    <h2 class="mb-6 text-main-600">4.8</h2>
-                                                    <div class="flex items-center justify-center gap-8"><span
-                                                            class="text-15 font-[500] text-warning-600 flex"><i
-                                                                class="ph-fill ph-star"></i></span> <span
-                                                            class="text-15 font-[500] text-warning-600 flex"><i
-                                                                class="ph-fill ph-star"></i></span> <span
-                                                            class="text-15 font-[500] text-warning-600 flex"><i
-                                                                class="ph-fill ph-star"></i></span> <span
-                                                            class="text-15 font-[500] text-warning-600 flex"><i
-                                                                class="ph-fill ph-star"></i></span> <span
-                                                            class="text-15 font-[500] text-warning-600 flex"><i
-                                                                class="ph-fill ph-star"></i></span></div><span
+                                                    <h2 class="mb-6 text-main-600">@if ($product['rating_times'] == 0) {{0}} @else {{number_format($product['rating']/$product['rating_times'], 1)}} @endif</h2>
+                                                    <div class="flex items-center justify-center gap-8">
+                                                        @php
+                                                        if ($product['rating_times'] != 0) {
+                                                            for ($i = 1; $i <= round($product['rating']/$product['rating_times']); $i++) {
+                                                                echo '<span class="text-15 font-[500] text-warning-600 flex"><i class="ph-fill ph-star"></i></span>';
+                                                            }
+                                                        }
+                                                        @endphp
+                                                        </div><span
                                                         class="mt-16 text-gray-500">Average Product Rating</span>
                                                 </div>
-                                                <div class="border border-gray-100 rounded-8 px-24 py-40 flex-grow">
+                                                {{-- <div class="border border-gray-100 rounded-8 px-24 py-40 flex-grow">
                                                     <div class="flex items-center gap-8 mb-20"><span
                                                             class="text-gray-900 flex-shrink-0">5</span>
                                                         <div class="progress w-full bg-gray-100 rounded-[50rem] h-8"
@@ -639,7 +635,7 @@
                                                                     class="ph-fill ph-star"></i></span></div><span
                                                             class="text-gray-900 flex-shrink-0">2</span>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>

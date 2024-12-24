@@ -6,5 +6,5 @@ rating
 vblock.asia
 viết báo cáo payment dài 10 trang
 status, order_code
-đăng nhập đăng ký bằng google
+fix path traversal, file upload
 xác thực bằng email

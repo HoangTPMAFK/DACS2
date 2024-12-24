@@ -137,22 +137,22 @@
                             class="border border-gray-100 hover-border-main-600 transition-1 rounded-16 px-24 py-40 h-full">
                             <h6 class="text-xl mb-32">Login</h6>
                             <div class="mb-24"><label for="username"
-                                    class="text-neutral-900 text-lg mb-8 font-[500]">Username or email address <span
+                                    class="text-neutral-900 text-lg mb-8 font-[500]">SĐT hoặc email <span
                                         class="text-danger">*</span></label> <input class="common-input" name="name" id="username"
-                                    placeholder="First Name"></div>
+                                    placeholder="SĐT hoặc email"></div>
                             <div class="mb-24"><label for="password"
-                                    class="text-neutral-900 text-lg mb-8 font-[500]">Password</label>
+                                    class="text-neutral-900 text-lg mb-8 font-[500]">Mật khẩu</label>
                                 <div class="relative"><input type="password" class="common-input" name="password" id="password"
-                                        placeholder="Enter Password"> <span
+                                        placeholder="Mật khẩu"> <span
                                         class="toggle-password absolute top-[50%] right-0 me-16 translate-y-[-50%] cursor-pointer ph ph-eye-slash"
                                         id="#password"></span></div>
                             </div>
                             <div class="mb-24 mt-48">
                                 <div class="flex items-center gap-48 flex-wrap"><button type="submit"
-                                        class="btn btn-main py-18 px-40">Log in</button>
+                                        class="btn btn-main py-18 px-40">Đăng nhập</button>
                                     <div class="form-check common-check"><input class="form-check-input" type="checkbox"
                                             name="remember" id="remember"> <label class="form-check-label flex-grow"
-                                            for="remember">Remember me</label></div>
+                                            for="remember">Nhớ tôi</label></div>
                                 </div>
                             </div>
                             <div class="mt-48"><a href="index.html"

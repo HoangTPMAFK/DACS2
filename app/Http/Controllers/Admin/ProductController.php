@@ -55,9 +55,13 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Product $product)
     {
-        //
+        return view('admin/product/show', [
+            'title' => 'Xem sản phẩm',
+            'product' => $product->attributesToArray(),
+            'categories' => $this->categoryService->get()
+        ]);
     }
 
     /**

@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Http\Services\User\UserService;
 use App\Http\Services\Category\CategoryService;
+use App\Mail\VerifyEmail;
+use App\Mail\VerifyMail;
+use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
 {
@@ -57,11 +60,13 @@ class LoginController extends Controller
             'phone' => $request->input('name'),
             'password' => $request->input('password')
         ], $request->input('remember'))) {
+            
             return redirect()->route('home');
         } else if (Auth::attempt([
             'email' => $request->input('name'),
             'password' => $request->input('password')
         ], $request->input('remember'))) {
+            Mail::to($request->input('name'))->send(new VerifyMail(Auth::user()));
             return redirect()->route('home');
         }
         Session::flash('error', 'SĐT hoặc mật khẩu không đúng');

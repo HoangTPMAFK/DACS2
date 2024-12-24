@@ -38,28 +38,8 @@
                         </div>
                     </div>
                     <div class="w-full mb-4">
-                        <div class="text-xl rounded-t-lg text-white bg-black p-2 font-semibold">Thông tin chi tiết</div>
-                        <div class="bg-white rounded-b-lg shadow-lg border-b border-slate-300">
-                            <table id="table" class="w-full text-center">
-                                <tr class="mb-2">
-                                    <td>Label</td>
-                                    <td>Name</td>
-                                    <td>Group name</td>
-                                    <td>Text</td>
-                                    <td>Number</td>
-                                    <td>Short description</td>
-                                    <td>Long description</td>
-                                    <td>Unit</td>
-                                    <td>Quantity</td>
-                                </tr>
-                            </table>
-                            <div class="mb-2">
-                                
-                            </div>
-                            <div class="mb-2 mx-2 flex justify-between">
-                                <button id="add-btn" type="button" class="bg-blue-600 p-2 text-lg text-white rounded-lg shadow-lg">Thêm trường</button>
-                                <button type="submit" class="bg-blue-600 p-2 text-lg text-white rounded-lg shadow-lg">Sửa danh mục</button>
-                            </div>
+                        <div class="mb-2 mx-2 flex justify-end">
+                            <button type="submit" class="bg-blue-600 p-2 text-lg text-white rounded-lg shadow-lg">Sửa danh mục</button>
                         </div>
                     </div>
                 </form>

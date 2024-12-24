@@ -40,7 +40,7 @@
                             </div>
                             <div class="w-full mb-8 md:w-1/3">
                                 <span>Địa chỉ</span>
-                                <input class="p-2 border border-slate-300" type="text" name="address" id="" value="{{$order['address']}}">
+                                <input class="p-2 border border-slate-300" type="text" name="address" id="" value="{{$order['address']}}" disabled>
                             </div>
                             <div class="w-full mb-8 md:w-1/3">
                                 <span>Ngày tạo</span>
@@ -67,8 +67,35 @@
                             </div>
                         </div>
                     </div>
+                    <div class="w-full mb-4">
+                        <div class="text-xl rounded-t-lg text-white bg-black p-2 font-semibold">Chi tiết đơn hàng</div>
+                        <div class="flex flex-col flex-wrap md:flex-row p-4 bg-white rounded-lg shadow-lg text-lg">
+                            <table class="w-full text-center">
+                                <thead>
+                                    <tr>
+                                        <th class="w-32 md:w-44"></th>
+                                        <th class="p-2">Tên sản phẩm</th>
+                                        <th class="p-2">Số lượng</th>
+                                        <th class="p-2">Giá</th>
+                                        <th class="p-2">Thành</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($products as $item)
+                                    <tr>
+                                        <td class="w-32 md:w-44 pl-4"><img class="w-28 md:w-40" src="/{{$item['getProduct']['thumbnail']}}"></td>
+                                        <td class="p-2">{{$item['getProduct']['product_name']}}</td>
+                                        <td class="p-2">{{$item['quantity']}}</td>
+                                        <td class="p-2">{{number_format($item['price']).' đ'}}</td>
+                                        <td class="p-2">{{number_format($item['price'] * $item['quantity']).' đ'}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     <div class="w-full mb-4 flex justify-end">
-                        <button type="submit" class="bg-blue-600 p-2 text-lg text-white rounded-lg shadow-lg">Cập nhật</button>
+                        <a href="/admin/sua-don-hang/{{$order['id']}}" class="bg-blue-600 p-2 text-lg text-white rounded-lg shadow-lg">Cập nhật</a>
                     </div>
                 </form>
             </main>

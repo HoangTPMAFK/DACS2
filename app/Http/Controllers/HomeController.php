@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Services\Category\CategoryService;
 use App\Http\Services\Product\ProductService;
 use App\Http\Services\Comment\CommentService;
+use App\Http\Services\SearchService;
 use App\Http\Services\Voucher\VoucherService;
 use App\Models\Category;
 
@@ -15,17 +16,19 @@ class HomeController extends Controller
     protected $productService;
     protected $commentService;
     protected $voucherService;
+    protected $searchService;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(CategoryService $categoryService, ProductService $productService, CommentService $commentService, VoucherService $voucherService)
+    public function __construct(CategoryService $categoryService, ProductService $productService, CommentService $commentService, VoucherService $voucherService, SearchService $searchService)
     {
         $this->categoryService = $categoryService;
         $this->productService = $productService;
         $this->commentService = $commentService;
         $this->voucherService = $voucherService;
+        $this->searchService = $searchService;
     }
 
     /**
@@ -38,7 +41,10 @@ class HomeController extends Controller
         // dd($this->categoryService->getVendors());
         return view('home', [
             'title' => 'Trang chủ',
-            'vendors' => $this->categoryService->getVendors()
+            'vendors' => $this->categoryService->getVendors(),
+            'latestProducts' => $this->productService->getLatestProducts(),
+            'mostSoldProducts' => $this->productService->getMostSoldProducts(),
+            'highestRatedProducts' => $this->productService->getHighestRatedProducts(),
         ]);
     }
     public function category($category_slug, $vendor = NULL) {
@@ -91,6 +97,14 @@ class HomeController extends Controller
         return view('voucher', [
             'title' => 'Mã giảm giá',
             'voucher' => $voucher,
+            'vendors' => $this->categoryService->getVendors(),
+        ]);
+    }
+    public function search(Request $request) {
+        $search = request()->input('product');
+        return view('category', [
+            'title' => 'Kết quả tìm kiếm',
+            'products' => $this->searchService->get($request),
             'vendors' => $this->categoryService->getVendors(),
         ]);
     }

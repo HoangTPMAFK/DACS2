@@ -74,7 +74,10 @@ class AgencyController extends Controller
                 ]);
             }
         } else if ($agency['id'] != "") {
-            return [1, 2, 3];
+            return view('admin/agency/show', [
+                'title' => 'Sửa chi nhánh',
+                'agency' => $agency->attributesToArray()
+            ]);
         }
     }
 

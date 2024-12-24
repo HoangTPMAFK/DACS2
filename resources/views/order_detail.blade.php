@@ -184,7 +184,7 @@
                                                 value="1" min="1" readonly> 
                                             </div>
                                         </td>
-                                        <td><span class="product_subtotal text-lg h6 mb-0 font-[600]">{{ number_format($item['getProduct']['price'] * $item['quantity']) }} đ</span></td>
+                                        <td><span class="product_subtotal text-lg h6 mb-0 font-[600]">{{ number_format($item['price'] * $item['quantity']) }} đ</span></td>
                                     </tr>
                                     @endforeach
                                 </tbody>
